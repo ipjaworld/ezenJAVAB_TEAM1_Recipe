@@ -1,11 +1,35 @@
 @charset "UTF-8";
 
+/** 
+태그들의 css 요소들 작업입니다.
+모든 요소는 분류에서 abc 순으로 정렬되어 있습니다.
+  */
+a{
+	text-decoration: none;
+	color: black;
+}
 body{
 	margin : 0;
 }
 
 header{
 	margin : 30px 0;
+}
+
+h2{
+	font-weight: 900;
+}
+
+ul{
+	list-style:none;
+}
+
+/** 
+클래스의 css 요소들 작업입니다.
+  */
+.footer-area{
+	display : flex;
+	justify-content: space-between;
 }
 
 .top_Icon{
@@ -38,6 +62,17 @@ header{
 #navbarSupportedContent ul li a{
 	margin : 10px 15px;
 	padding : 0px 30px;
+}
+
+.item{
+	width: 240px;
+  	height: 163px;
+	border: 1px solid black;
+}
+
+.item img{
+	width: 240px;
+  	height: 163px;
 }
 
 .slider {
@@ -95,3 +130,7 @@ left: 0;
 .ctrl-btn.pro-next {
 right: 0;
 }
+
+/** 
+아이디의 css 요소들 작업입니다. (분류 진행 중)
+  */
