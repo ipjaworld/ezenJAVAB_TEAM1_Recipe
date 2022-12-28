@@ -1,47 +1,46 @@
 package com.ezenb1.recipe.util;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 
 public class APIExamTranslateNMT {
-	public static void main(String[] args) {
-        String clientId = "YOUR_CLIENT_ID";//¾ÖÇÃ¸®ÄÉÀÌ¼Ç Å¬¶óÀÌ¾ðÆ® ¾ÆÀÌµð°ª";
-        String clientSecret = "YOUR_CLIENT_SECRET";//¾ÖÇÃ¸®ÄÉÀÌ¼Ç Å¬¶óÀÌ¾ðÆ® ½ÃÅ©¸´°ª";
-        try {
-            String text = URLEncoder.encode("¾È³çÇÏ¼¼¿ä. ¿À´Ã ±âºÐÀº ¾î¶»½À´Ï±î?", "UTF-8");
-            String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
-            URL url = new URL(apiURL);
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setRequestMethod("POST");
-            con.setRequestProperty("X-Naver-Client-Id", clientId);
-            con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
-            // post request
-            String postParams = "source=ko&target=en&text=" + text;
-            con.setDoOutput(true);
-            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-            wr.writeBytes(postParams);
-            wr.flush();
-            wr.close();
-            int responseCode = con.getResponseCode();
-            BufferedReader br;
-            if(responseCode==200) { // Á¤»ó È£Ãâ
-                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            } else {  // ¿¡·¯ ¹ß»ý
-                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-            }
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-            while ((inputLine = br.readLine()) != null) {
-                response.append(inputLine);
-            }
-            br.close();
-            System.out.println(response.toString());
-        } catch (Exception e) {
-            System.out.println(e);
+	/**
+	 * ë ˆì‹œí”¼ ìž¬ë£Œ ì •ë³´ ìš”ì²­ URL (í•˜ë£¨ 10000íŠ¸ëž˜í”½ê¹Œì§€ ê°€ëŠ¥)
+	 * http://211.237.50.150:7080/openapi/sample/xml/Grid_20210909000000000613_1/1/5
+	 * ì´ê±´í•˜ ì¸ì¦í‚¤
+	 * 967133ef3e229ec2ccf982d0a3d2eb32573a2b71fa0471172b8a0ed521d6361c
+	 */
+	
+	public static void main(String[] args) throws IOException {
+        StringBuilder urlBuilder = new StringBuilder("http://211.237.50.150:7080/openapi/sample/xml/Grid_20210909000000000613_1/1/5"); /*URL*/
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=967133ef3e229ec2ccf982d0a3d2eb32573a2b71fa0471172b8a0ed521d6361c"); /*Service Key*/
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*í•œ íŽ˜ì´ì§€ ê²°ê³¼ ìˆ˜*/
+        urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*íŽ˜ì´ì§€ ë²ˆí˜¸*/
+        urlBuilder.append("&" + URLEncoder.encode("stationName","UTF-8") + "=" + URLEncoder.encode("ìˆ˜ë‚´ë™", "UTF-8")); /*ì¸¡ì •ì†Œ ì´ë¦„*/
+        urlBuilder.append("&" + URLEncoder.encode("dataTerm","UTF-8") + "=" + URLEncoder.encode("DAILY", "UTF-8")); /*ìš”ì²­ ë°ì´í„°ê¸°ê°„ (í•˜ë£¨ : DAILY, í•œë‹¬ : MONTH, 3ë‹¬ : 3MONTH)*/
+        urlBuilder.append("&" + URLEncoder.encode("ver","UTF-8") + "=" + URLEncoder.encode("1.3", "UTF-8")); /*ë²„ì „ë³„ ìƒì„¸ ê²°ê³¼ ì°¸ê³ ë¬¸ì„œ ì°¸ì¡°*/
+        URL url = new URL(urlBuilder.toString());
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-type", "application/json");
+        System.out.println("Response code: " + conn.getResponseCode());
+        BufferedReader rd;
+        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        } else {
+            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
         }
+        StringBuilder sb = new StringBuilder();
+        String line;
+        while ((line = rd.readLine()) != null) {
+            sb.append(line);
+        }
+        rd.close();
+        conn.disconnect();
+        System.out.println(sb.toString());
     }
 }
