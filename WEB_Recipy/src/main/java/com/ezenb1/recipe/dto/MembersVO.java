@@ -15,7 +15,15 @@ public class MembersVO {
 	private String zip_num; // 집우편주소?
 	private Timestamp indate; // 가입날짜?
 	private String img; // 프로필사진?
+	private String useyn; // 휴면회원 여부
 	
+	
+	public String getUseyn() {
+		return useyn;
+	}
+	public void setUseyn(String useyn) {
+		this.useyn = useyn;
+	}
 	public String getId() {
 		return id;
 	}
