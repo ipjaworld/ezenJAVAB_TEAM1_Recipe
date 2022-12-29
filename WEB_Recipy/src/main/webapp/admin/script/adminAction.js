@@ -27,12 +27,12 @@ function go_total( comm ){
 
 function go_members_delete(){
 	var count = 0;
-	if( document.frm.delId.length == undefined ){
-		if( document.frm.delId.checked==true ) count++;
+	if( document.frm.id.length == undefined ){
+		if( document.frm.id.checked==true ) count++;
 		
 	}else{
-		for( var i=0; i<document.frm.delId.length; i++){
-			if( document.frm.delId[i].checked==true){
+		for( var i=0; i<document.frm.id.length; i++){
+			if( document.frm.id[i].checked==true){
 				count++;
 			}
 		}
@@ -45,6 +45,28 @@ function go_members_delete(){
 	    document.frm.submit();    
 	}    
 }
+
+function go_sleep_member(){
+	var count = 0;
+	if( document.frm.id.length == undefined ){
+		if( document.frm.id.checked==true ) count++;
+		
+	}else{
+		for( var i=0; i<document.frm.id.length; i++){
+			if( document.frm.id[i].checked==true){
+				count++;
+			}
+		}
+	}	
+	if(count == 0) {
+		alert("휴먼전환할 회원을 선택해주세요");
+	}	
+	else{	
+		document.frm.action = "recipe.do?command=adminSleepMem";
+	    document.frm.submit();    
+	}    
+}
+
 
 function go_reply_delete(){
 	var count = 0;

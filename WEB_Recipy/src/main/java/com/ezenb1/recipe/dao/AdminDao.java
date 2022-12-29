@@ -148,6 +148,22 @@ public class AdminDao {
 		
 		return mvo;
 	}
+	public void seleepMember(String sleep) {
+		String sql="";
+		if(sleep.equals("Y")) {
+		sql = "update members set useyn ='N' where id=?";
+		}else {
+		sql = "update members set useyn ='Y' where id=?";	
+		}
+		con = Dbman.getConnection();
+		try {
+		      pstmt = con.prepareStatement(sql); 
+		      pstmt.setString(1, sleep);
+		      pstmt.executeUpdate();
+		} catch (Exception e) { e.printStackTrace();
+	    } finally { Dbman.close(con, pstmt, rs); } 
+		
+	}
 		
 	}
 	

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file= "../header.jsp"%>
-<%@ include file="sub_image_menu.jsp" %>
+
 
 <article>
 <h2> 나의 게시판</h2>

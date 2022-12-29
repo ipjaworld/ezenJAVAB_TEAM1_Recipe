@@ -10,6 +10,7 @@ import com.ezenb1.recipe.controller.action.admin.AdminMemListAction;
 import com.ezenb1.recipe.controller.action.admin.AdminQnaListAction;
 import com.ezenb1.recipe.controller.action.admin.AdminRecipeListAction;
 import com.ezenb1.recipe.controller.action.admin.AdminReplyListAction;
+import com.ezenb1.recipe.controller.action.admin.AdminSleepMemAction;
 
 public class RecipeFactory {
 
@@ -29,6 +30,7 @@ public class RecipeFactory {
 		else if( command.equals("adminDeleteMem") ) ac = new AdminDeleteMemAction();
 		else if( command.equals("adminDeleteReply") ) ac = new AdminDeleteReplyAction();
 		else if( command.equals("adminMemDetail") ) ac = new AdminMemDetailAction();
+		else if( command.equals("adminSleepMem") ) ac = new AdminSleepMemAction();
 		
 		
 		/**

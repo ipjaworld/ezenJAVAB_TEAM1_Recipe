@@ -14,12 +14,13 @@
 	<table id="membersList">
 		<tr><th>아이디</th><th> 이름 </th><th>이메일</th><th>닉네임</th><th>가입일</th></tr>
 	    <c:forEach items="${membersList}" var="membersVO">  
-		    <tr><td><input type="checkbox" name="delId" value="${membersVO.id}">${membersVO.id}</td>
+		    <tr><td><input type="checkbox" name="id" value="${membersVO.id}">${membersVO.id}</td>
 		    	<td><a href="recipe.do?command=adminMemDetail&id=${membersVO.id}">${membersVO.name}</a></td><td>${membersVO.email}</td><td>${membersVO.nick}</td>
 		    	<td><fmt:formatDate value="${membersVO.indate}"/></td></tr>
 	  </c:forEach>
 	  <tr>
 	  <th><a href="#" onClick="go_members_delete();">회원 삭제하기</a></th>
+	  <th><a href="#" onClick="go_sleep_member();">휴먼회원 전환하기</a></th>
 	  <tr>
 	</table>
 	<jsp:include page="/admin/paging/paging.jsp">   
