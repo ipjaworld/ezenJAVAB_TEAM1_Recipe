@@ -27,7 +27,7 @@ public class Paging {
 		startNum = (page-1)*displayRow+1;
 		endNum = page*displayRow;
 		System.out.println(beginPage + " " + endPage + " " + startNum + " " + endNum + " " + totalCount);
-	} // setTotalCount ¸â¼­µåÀÇ ¸Å°³º¯¼ö¿¡ ÃÑ°Ô½Ã¹° °¹¼ö°¡ ÀÔ·ÂµÇ¸é paging() ¸Ş¼­µåµµ È£ÃâµÇ¾î¼­ °¢ º¯¼ö°ªÀÌ °è»êµË´Ï´Ù.
+	} // setTotalCount ë©¤ì„œë“œì˜ ë§¤ê°œë³€ìˆ˜ì— ì´ê²Œì‹œë¬¼ ê°¯ìˆ˜ê°€ ì…ë ¥ë˜ë©´ paging() ë©”ì„œë“œë„ í˜¸ì¶œë˜ì–´ì„œ ê° ë³€ìˆ˜ê°’ì´ ê³„ì‚°ë©ë‹ˆë‹¤.
 	
 	public int getPage() {
 		return page;
@@ -43,7 +43,7 @@ public class Paging {
 
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
-		paging(); // ¸â¹ö ¸Ş¼­µå È£Ãâ
+		paging(); // ë©¤ë²„ ë©”ì„œë“œ í˜¸ì¶œ
 	}
 
 	public int getBeginPage() {

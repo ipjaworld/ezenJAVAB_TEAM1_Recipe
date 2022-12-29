@@ -2,10 +2,10 @@ package com.ezenb1.recipe.dto;
 
 public class KindVO {
 
-	private Integer type; // Á¾·ùº°?
-	private Integer rec; // ÃßÃµº°
-	private Integer ing; // Àç·áº° 
-	private Integer theme; // Å×¸¶º°
+	private Integer type; // ì¢…ë¥˜ë³„?
+	private Integer rec; // ì¶”ì²œë³„
+	private Integer ing; // ìž¬ë£Œë³„ 
+	private Integer theme; // í…Œë§ˆë³„
 	
 	public Integer getType() {
 		return type;

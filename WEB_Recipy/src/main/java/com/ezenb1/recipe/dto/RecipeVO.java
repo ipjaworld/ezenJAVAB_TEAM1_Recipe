@@ -4,20 +4,20 @@ import java.sql.Timestamp;
 
 public class RecipeVO {
 
-	private Integer rnum;  // ·¹½ÃÇÇ µî·Ï ¹øÈ£
-	private String id; // È¸¿ø ¾ÆÀÌµğ
-	private String subject; // ·¹½ÃÇÇ Á¦¸ñ
-	private String content; // ·¹½ÃÇÇ ³»¿ë
-	private Timestamp indate; // ±Û¾´ ³¯Â¥?
-	private Integer views; //Á¶È¸¼ö
-	private Integer  time; // Á¶¸®½Ã°£
-	private Integer likes; // ÃßÃµ¼ö
-	private Integer  type; //  Á¾·ùº°
-	private Integer  ing; // Àç·áº°
-	private Integer theme; // Å×¸¶º°
-	private Integer rec; // ÃßÀü
-	private Integer report; // °æ°í?¹ŞÀº¼ö?
-	private String thumbnail; // ½æ³×ÀÏ ÀÌ¹ÌÁö
+	private Integer rnum;  // ë ˆì‹œí”¼ ë“±ë¡ ë²ˆí˜¸
+	private String id; // íšŒì› ì•„ì´ë””
+	private String subject; // ë ˆì‹œí”¼ ì œëª©
+	private String content; // ë ˆì‹œí”¼ ë‚´ìš©
+	private Timestamp indate; // ê¸€ì“´ ë‚ ì§œ?
+	private Integer views; //ì¡°íšŒìˆ˜
+	private Integer  time; // ì¡°ë¦¬ì‹œê°„
+	private Integer likes; // ì¶”ì²œìˆ˜
+	private Integer  type; //  ì¢…ë¥˜ë³„
+	private Integer  ing; // ì¬ë£Œë³„
+	private Integer theme; // í…Œë§ˆë³„
+	private Integer rec; // ì¶”ì „
+	private Integer report; // ê²½ê³ ?ë°›ì€ìˆ˜?
+	private String thumbnail; // ì¸ë„¤ì¼ ì´ë¯¸ì§€
 	
 	public String getThumbnail() {
 		return thumbnail;

@@ -2,10 +2,10 @@ package com.ezenb1.recipe.dto;
 
 public class ProcessimageVO {
 
-	private Integer iseq;  // Á¶¸®¹æ¹ı¼ø¼­?
-	private String links; // »çÁø Æú´õ°æ·Î
-	private String description; // Á¶¸® ¼³¸í
-	private Integer rnum; // ·¹½ÃÇÇ °Ô½Ã¹° ¹øÈ£
+	private Integer iseq;  // ì¡°ë¦¬ë°©ë²•ìˆœì„œ?
+	private String links; // ì‚¬ì§„ í´ë”ê²½ë¡œ
+	private String description; // ì¡°ë¦¬ ì„¤ëª…
+	private Integer rnum; // ë ˆì‹œí”¼ ê²Œì‹œë¬¼ ë²ˆí˜¸
 	
 	public Integer getIseq() {
 		return iseq;

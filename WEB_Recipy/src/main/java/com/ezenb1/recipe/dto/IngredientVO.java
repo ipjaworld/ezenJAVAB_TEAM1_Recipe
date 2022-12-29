@@ -2,10 +2,10 @@ package com.ezenb1.recipe.dto;
 
 public class IngredientVO {
 	
-	private Integer rnum; // ·¹½ÃÇÇ °Ô½Ã¹° ¹øÈ£
-	private String  iname; // Àç·á ÀÌ¸§
-	private String  quantity; // ¼ö·®? 
-	private Integer price; // Àç·á °¡°İ?
+	private Integer rnum; // ë ˆì‹œí”¼ ê²Œì‹œë¬¼ ë²ˆí˜¸
+	private String  iname; // ì¬ë£Œ ì´ë¦„
+	private String  quantity; // ìˆ˜ëŸ‰? 
+	private Integer price; // ì¬ë£Œ ê°€ê²©?
 	
 	public Integer getRnum() {
 		return rnum;

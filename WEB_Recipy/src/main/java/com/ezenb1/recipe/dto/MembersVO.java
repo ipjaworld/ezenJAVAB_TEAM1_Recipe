@@ -4,17 +4,17 @@ import java.sql.Timestamp;
 
 public class MembersVO {
 
-	private String id; // ¾ÆÀÌµğ
-	private String pwd; // ºñ¹Ğ¹øÈ£
-	private String name; // ÀÌ¸§
-	private String phone; // ÀüÈ­¹øÈ£
-	private String email; // ÀÌ¸ŞÀÏ
-	private String nick; // ´Ğ³×ÀÓ
-	private String address1; // ÁÖ¼Ò1
-	private String address2; // ÁÖ¼Ò2
-	private String zip_num; // Áı¿ìÆíÁÖ¼Ò?
-	private Timestamp indate; // °¡ÀÔ³¯Â¥?
-	private String img; // ÇÁ·ÎÇÊ»çÁø?
+	private String id; // ì•„ì´ë””
+	private String pwd; // ë¹„ë°€ë²ˆí˜¸
+	private String name; // ì´ë¦„
+	private String phone; // ì „í™”ë²ˆí˜¸
+	private String email; // ì´ë©”ì¼
+	private String nick; // ë‹‰ë„¤ì„
+	private String address1; // ì£¼ì†Œ1
+	private String address2; // ì£¼ì†Œ2
+	private String zip_num; // ì§‘ìš°í¸ì£¼ì†Œ?
+	private Timestamp indate; // ê°€ì…ë‚ ì§œ?
+	private String img; // í”„ë¡œí•„ì‚¬ì§„?
 	
 	public String getId() {
 		return id;
