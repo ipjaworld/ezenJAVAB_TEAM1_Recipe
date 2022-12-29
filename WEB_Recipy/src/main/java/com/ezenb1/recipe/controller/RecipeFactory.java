@@ -24,6 +24,49 @@ public class RecipeFactory {
 		else if( command.equals("adminReplyList") ) ac = new AdminReplyListAction();
 		else if( command.equals("adminQnaList") ) ac = new AdminQnaListAction();
 		
+		/**
+		 * 여기 밑에서부터 붙여넣기 해주시면 됩니다.
+		 
+		else if( command.equals("joinForm") ) ac = new JoinFormAction();
+		else if( command.equals("join") ) ac = new JoinAction();
+		else if( command.equals("idCheckForm") ) ac = new IdCheckFormAction();
+		else if( command.equals("loginForm") ) ac = new LoginFormAction();
+		else if( command.equals("login") ) ac = new LoginAction();
+		else if( command.equals("logout") ) ac = new LogoutAction();
+		
+		else if( command.equals("updateMemForm") ) ac = new UpdateMemFormAction();
+		else if( command.equals("updateMember") ) ac = new UpdateMemberAction();
+		else if( command.equals("withdrawal") ) ac = new WithdrawalAction();
+		
+		else if( command.equals("recipeForm") ) ac = new RecipeFormAction();
+		else if( command.equals("writeRecipe") ) ac = new WriteRecipeAction();
+		else if( command.equals("recipeUpdateForm") ) ac = new RecipeUpdateFormAction();
+		else if( command.equals("updateRecipe") ) ac = new UpdateRecipeAction();
+		else if( command.equals("deleteRecipe") ) ac = new DeleteRecipeAction();
+		else if( command.equals("recipeList") ) ac = new RecipeListAction();
+		else if( command.equals("recipeCategory") ) ac = new RecipeCategoryAction();
+		else if( command.equals("recipeDetailWithoutView") ) ac = new RecipeDetailWithoutViewAction();
+		
+		else if( command.equals("addReply") ) ac = new AddReplyAction();
+		else if( command.equals("updateReply") ) ac = new UpdateReplyAction();
+		else if( command.equals("deleteReply") ) ac = new DeleteReplyAction();
+		else if( command.equals("likeRecipe") ) ac = new LikeRecipeAction();
+		
+		else if( command.equals("myPageView") ) ac = new MyPageViewAction();
+		else if( command.equals("interestView") ) ac = new InterestViewAction();
+		else if( command.equals("myRecipeList") ) ac = new MyRecipeListAction();
+		else if( command.equals("recentView") ) ac = new RecentViewAction();
+		else if( command.equals("favoriteView") ) ac = new FavoriteViewAction();
+		
+		else if( command.equals("qnaList") ) ac = new QnaListAction();
+		else if( command.equals("myqnaList") ) ac = new MyqnaListAction();
+		else if( command.equals("qnaDetail") ) ac = new QnaDetailAction();
+		else if( command.equals("qnaWriteForm") ) ac = new QnaWriteFormAction();
+		else if( command.equals("writeQna") ) ac = new WriteQnaAction();
+		else if( command.equals("qnaUpdateForm") ) ac = new QnaUpdateFormAction();
+		else if( command.equals("updateQna") ) ac = new UpdateQnaAction();
+		else if( command.equals("deleteQna") ) ac = new DeleteQnaAction();
+		*/
 		
 		return ac;
 	}
