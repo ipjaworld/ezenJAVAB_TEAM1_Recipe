@@ -19,6 +19,8 @@ import com.ezenb1.recipe.controller.action.member.JoinFormAction;
 import com.ezenb1.recipe.controller.action.member.UpdateMemFormAction;
 import com.ezenb1.recipe.controller.action.qna.MyqnaListAction;
 import com.ezenb1.recipe.controller.action.qna.QnaListAction;
+import com.ezenb1.recipe.controller.action.recipeBoard.RecipeFormAction;
+import com.ezenb1.recipe.controller.action.recipeBoard.WriteRecipeAction;
 
 public class RecipeFactory {
 
@@ -59,6 +61,9 @@ public class RecipeFactory {
 		//else if( command.equals("deleteQna") ) ac = new DeleteQnaAction();
 		else if( command.equals("adminSleepMem") ) ac = new AdminSleepMemAction();
 		
+		else if( command.equals("recipeForm") ) ac = new RecipeFormAction();
+		else if( command.equals("writeRecipe") ) ac = new WriteRecipeAction();
+		
 		/**
 		 * 여기 밑에서부터 붙여넣기 해주시면 됩니다.
 		 
@@ -67,8 +72,6 @@ public class RecipeFactory {
 		else if( command.equals("login") ) ac = new LoginAction();
 		else if( command.equals("logout") ) ac = new LogoutAction();
 		
-		else if( command.equals("recipeForm") ) ac = new RecipeFormAction();
-		else if( command.equals("writeRecipe") ) ac = new WriteRecipeAction();
 		else if( command.equals("recipeUpdateForm") ) ac = new RecipeUpdateFormAction();
 		else if( command.equals("updateRecipe") ) ac = new UpdateRecipeAction();
 		else if( command.equals("deleteRecipe") ) ac = new DeleteRecipeAction();

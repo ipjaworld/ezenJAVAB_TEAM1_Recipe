@@ -41,7 +41,7 @@
 	           		<div id="loginBtn"><a href="recipe.do?command=login">로그인</a></div>
 	           		<div id="joinBtn"><a href="recipe.do?command=join">회원가입</a></div>
 	           </div>
-	           <div><a href="recipe.do?command=writeRecipe"><img class="top_Icon" src="image/pensil1.png"></a></div>
+	           <div><a href="recipe.do?command=recipeForm"><img class="top_Icon" src="image/pensil1.png"></a></div>
 	        </div>
         </div>
         
@@ -55,24 +55,24 @@
 		        <span class="navbar-toggler-icon"></span>
 		      </button>
 		      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-		        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+		        <ul class="navbar-nav me-auto mt-3 mb-3">
 		          <li class="nav-item">
-		            <a class="nav-link active text-white" aria-current="page" href="#">메인</a>
-		          </li>
-		          <li class="nav-item">
-		            <a class="nav-link text-white" href="#">종류별</a>
-		          </li>
-                  <li class="nav-item">
-		            <a class="nav-link text-white" href="#">테마별</a>
-		          </li>
-                  <li class="nav-item">
-		            <a class="nav-link text-white" href="#">재료별</a>
-		          </li>
-                  <li class="nav-item">
-		            <a class="nav-link text-white" href="#">추천</a>
+		            <a class="" aria-current="page" href="#">메인</a>
 		          </li>
 		          <li class="nav-item">
-		            <a class="nav-link text-white" href="#">사이트맵</a>
+		            <a class="" href="#">종류별</a>
+		          </li>
+                  <li class="nav-item">
+		            <a class="" href="#">테마별</a>
+		          </li>
+                  <li class="nav-item">
+		            <a class="" href="#">재료별</a>
+		          </li>
+                  <li class="nav-item">
+		            <a class="" href="#">추천</a>
+		          </li>
+		          <li class="nav-item">
+		            <a class="" href="#">사이트맵</a>
 		          </li>
 		        </ul>
 		      </div>

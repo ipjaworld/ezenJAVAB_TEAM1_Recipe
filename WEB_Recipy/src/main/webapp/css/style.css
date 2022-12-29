@@ -24,13 +24,31 @@ ul{
 	list-style:none;
 }
 
+footer{
+	border-top: 1px solid #848484;
+	padding-top: 30px;
+}
+
 /** 
 클래스의 css 요소들 작업입니다.
   */
+.container{
+	text-align: center;
+}
+
 .footer-area{
 	display : flex;
 	justify-content: space-between;
 }
+
+.footer-content{
+	width : 1140px;
+}
+
+.footer-content .row{
+	width : 1140px;
+}
+
 
 .top_Icon{
 	width: 50px;
@@ -51,12 +69,16 @@ ul{
 	padding : 5px;
 }
 
-.boxFlexTop div img{
-	
-}
-
 .navbar{
 	padding-left: 15em;
+}
+
+.nav-item a{
+	color: white;
+}
+
+.nav-item a:hover{
+	color: yellow;
 }
 
 #navbarSupportedContent ul li a{
