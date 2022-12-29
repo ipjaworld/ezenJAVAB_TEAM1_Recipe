@@ -88,3 +88,12 @@ function go_reply_delete(){
 	    document.frmm.submit();    
 	}    
 }
+
+function selectAll(selectAll)  {
+  const checkboxes 
+       = document.getElementsByName('id');
+  
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll.checked;
+  })
+}

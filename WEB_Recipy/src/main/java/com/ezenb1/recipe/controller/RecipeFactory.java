@@ -10,6 +10,15 @@ import com.ezenb1.recipe.controller.action.admin.AdminMemListAction;
 import com.ezenb1.recipe.controller.action.admin.AdminQnaListAction;
 import com.ezenb1.recipe.controller.action.admin.AdminRecipeListAction;
 import com.ezenb1.recipe.controller.action.admin.AdminReplyListAction;
+import com.ezenb1.recipe.controller.action.admin.AdminSleepMemAction;
+import com.ezenb1.recipe.controller.action.member.FindAccountByAction;
+import com.ezenb1.recipe.controller.action.member.FindAccountFormAction;
+import com.ezenb1.recipe.controller.action.member.IdCheckFormAction;
+import com.ezenb1.recipe.controller.action.member.JoinAction;
+import com.ezenb1.recipe.controller.action.member.JoinFormAction;
+import com.ezenb1.recipe.controller.action.member.UpdateMemFormAction;
+import com.ezenb1.recipe.controller.action.qna.MyqnaListAction;
+import com.ezenb1.recipe.controller.action.qna.QnaListAction;
 
 public class RecipeFactory {
 
@@ -37,17 +46,18 @@ public class RecipeFactory {
 		else if( command.equals("join") ) ac = new JoinAction();
 		else if( command.equals("idCheckForm") ) ac = new IdCheckFormAction();
 		else if( command.equals("updateMemForm") ) ac = new UpdateMemFormAction();
-		else if( command.equals("updateMember") ) ac = new UpdateMemberAction();
-		else if( command.equals("withdrawal") ) ac = new WithdrawalAction();
+		//else if( command.equals("updateMember") ) ac = new UpdateMemberAction();
+		//else if( command.equals("withdrawal") ) ac = new WithdrawalAction();
 		
 		else if( command.equals("qnaList") ) ac = new QnaListAction();
 		else if( command.equals("myqnaList") ) ac = new MyqnaListAction();
-		else if( command.equals("qnaDetail") ) ac = new QnaDetailAction();
-		else if( command.equals("qnaWriteForm") ) ac = new QnaWriteFormAction();
-		else if( command.equals("writeQna") ) ac = new WriteQnaAction();
-		else if( command.equals("qnaUpdateForm") ) ac = new QnaUpdateFormAction();
-		else if( command.equals("updateQna") ) ac = new UpdateQnaAction();
-		else if( command.equals("deleteQna") ) ac = new DeleteQnaAction();
+		//else if( command.equals("qnaDetail") ) ac = new QnaDetailAction();
+		//else if( command.equals("qnaWriteForm") ) ac = new QnaWriteFormAction();
+		//else if( command.equals("writeQna") ) ac = new WriteQnaAction();
+		//else if( command.equals("qnaUpdateForm") ) ac = new QnaUpdateFormAction();
+		//else if( command.equals("updateQna") ) ac = new UpdateQnaAction();
+		//else if( command.equals("deleteQna") ) ac = new DeleteQnaAction();
+		else if( command.equals("adminSleepMem") ) ac = new AdminSleepMemAction();
 		
 		/**
 		 * 여기 밑에서부터 붙여넣기 해주시면 됩니다.

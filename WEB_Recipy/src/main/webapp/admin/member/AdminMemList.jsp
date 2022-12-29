@@ -12,9 +12,22 @@
 		<input class="btn" type="button" name="btn_total" value="전체보기 "	onClick="go_total('adminMemList')"></td> </tr>
 	</table><br>
 	<table id="membersList">
-		<tr><th>아이디</th><th> 이름 </th><th>이메일</th><th>닉네임</th><th>가입일</th></tr>
+	
+		<tr> <th><input type='checkbox'name='id' value='selectall' onclick='selectAll(this)'/>전체선택/해제</th>
+		<th>아이디</th><th> 이름 </th><th>이메일</th><th>닉네임</th><th>가입일</th>
+		</tr>
 	    <c:forEach items="${membersList}" var="membersVO">  
-		    <tr><td><input type="checkbox" name="id" value="${membersVO.id}">${membersVO.id}</td>
+		    <tr>
+		    <td><input type="checkbox" name="id" value="${membersVO.id}"></td>
+		    <td>
+		    <c:choose>
+		    <c:when test='${membersVO.useyn=="Y"}'>	    
+		    ${membersVO.id}<span style="font-weight:bold; color:blue;">정상</span>		    
+		    </c:when>
+		    <c:otherwise>${membersVO.id}<span style="font-weight:bold; color:red;">휴먼</span>		    		    
+		    </c:otherwise>
+		    </c:choose>
+		    </td>
 		    	<td><a href="recipe.do?command=adminMemDetail&id=${membersVO.id}">${membersVO.name}</a></td><td>${membersVO.email}</td><td>${membersVO.nick}</td>
 		    	<td><fmt:formatDate value="${membersVO.indate}"/></td></tr>
 	  </c:forEach>

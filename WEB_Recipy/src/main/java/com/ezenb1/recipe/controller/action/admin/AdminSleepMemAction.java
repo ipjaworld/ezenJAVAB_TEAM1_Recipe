@@ -17,7 +17,9 @@ public class AdminSleepMemAction implements Action {
 		
 		AdminDao mdao = AdminDao.getInstance();
 		for( String sleep : id) {
-		mdao.seleepMember(sleep);
+			String useyn = mdao.selectUseyn(sleep);
+			mdao.sleepMember(useyn,sleep);
+			System.out.printf(useyn,sleep);
 		}
 		
 		response.sendRedirect("recipe.do?command=adminMemList");

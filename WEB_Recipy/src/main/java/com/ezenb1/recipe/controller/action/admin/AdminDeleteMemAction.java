@@ -14,11 +14,11 @@ public class AdminDeleteMemAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String[] delId = request.getParameterValues("delId");
+		String[] id = request.getParameterValues("id");
 		
 		AdminDao mdao = AdminDao.getInstance();
-		for( String id : delId) {
-		mdao.deleteMember(id);
+		for( String delId : id) {
+		mdao.deleteMember(delId);
 		}
 		
 		response.sendRedirect("recipe.do?command=adminMemList");

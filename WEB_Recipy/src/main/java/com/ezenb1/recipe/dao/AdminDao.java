@@ -62,20 +62,21 @@ public class AdminDao {
 				mvo.setAddress1(rs.getString("address1"));
 				mvo.setZip_num(rs.getString("zip_num"));
 				mvo.setIndate(rs.getTimestamp("indate"));
-				mvo.setImg(rs.getString("img"));			
+				mvo.setImg(rs.getString("img"));
+				mvo.setUseyn(rs.getString("useyn"));
 				list.add(mvo);
 			}
 		} catch (SQLException e) {	e.printStackTrace();
 		} finally {  Dbman.close(con, pstmt, rs);  }
 		return list;
 	}
-	public void deleteMember(String id) {
+	public void deleteMember(String delId) {
 		
 		String sql = "delete from members where id=?";
 		con = Dbman.getConnection();
 		try {
 		      pstmt = con.prepareStatement(sql); 
-		      pstmt.setString(1, id);
+		      pstmt.setString(1, delId);
 		      pstmt.executeUpdate();
 		} catch (Exception e) { e.printStackTrace();
 	    } finally { Dbman.close(con, pstmt, rs); }   	
@@ -148,13 +149,14 @@ public class AdminDao {
 		
 		return mvo;
 	}
-	public void seleepMember(String sleep) {
+	public void sleepMember(String useyn,String sleep) {
 		String sql="";
-		if(sleep.equals("Y")) {
+		if(useyn.equals("Y")) {
 		sql = "update members set useyn ='N' where id=?";
 		}else {
 		sql = "update members set useyn ='Y' where id=?";	
 		}
+		
 		con = Dbman.getConnection();
 		try {
 		      pstmt = con.prepareStatement(sql); 
@@ -163,6 +165,22 @@ public class AdminDao {
 		} catch (Exception e) { e.printStackTrace();
 	    } finally { Dbman.close(con, pstmt, rs); } 
 		
+	}
+	public String selectUseyn(String sleep) {
+		String sql = "select useyn from members where id=?";
+		//select useyn from members where id='scott';
+		String useyn = "";
+		con = Dbman.getConnection();
+		try {
+		      pstmt = con.prepareStatement(sql); 
+		      pstmt.setString(1, sleep);
+		      rs= pstmt.executeQuery();
+		      if(rs.next()) {
+		    	  useyn=rs.getString("useyn");
+		      }
+		} catch (Exception e) { e.printStackTrace();
+	    } finally { Dbman.close(con, pstmt, rs); } 
+		return useyn;
 	}
 		
 	}
