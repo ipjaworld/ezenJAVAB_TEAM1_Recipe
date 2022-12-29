@@ -16,7 +16,7 @@
         <h3>회원 관리</h3>
     </div>
     <div class="smi_content">
-        <div><a href="recipe.do?command=adminMemList">회원 리스트</a></div>
+        <div><a href="recipe.do?command=adminMemList&page=1&key=">회원 리스트</a></div>
     </div>
 </div>
 <div class="sub_menu_item">
@@ -24,7 +24,7 @@
         <h3>댓글 관리</h3>
     </div>
     <div class="smi_content">
-        <div><a href="recipe.do?command=adminReplyList">댓글 리스트</a></div>
+        <div><a href="recipe.do?command=adminReplyList&page=1&key=">댓글 리스트</a></div>
     </div>
 </div>
 <div class="sub_menu_item">

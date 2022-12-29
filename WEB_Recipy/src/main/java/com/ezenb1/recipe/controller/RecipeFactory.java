@@ -3,6 +3,9 @@ package com.ezenb1.recipe.controller;
 import com.ezenb1.recipe.controller.action.Action;
 import com.ezenb1.recipe.controller.action.IndexAction;
 import com.ezenb1.recipe.controller.action.admin.AdminAction;
+import com.ezenb1.recipe.controller.action.admin.AdminDeleteMemAction;
+import com.ezenb1.recipe.controller.action.admin.AdminDeleteReplyAction;
+import com.ezenb1.recipe.controller.action.admin.AdminMemDetailAction;
 import com.ezenb1.recipe.controller.action.admin.AdminMemListAction;
 import com.ezenb1.recipe.controller.action.admin.AdminQnaListAction;
 import com.ezenb1.recipe.controller.action.admin.AdminRecipeListAction;
@@ -23,6 +26,10 @@ public class RecipeFactory {
 		else if( command.equals("adminMemList") ) ac = new AdminMemListAction();
 		else if( command.equals("adminReplyList") ) ac = new AdminReplyListAction();
 		else if( command.equals("adminQnaList") ) ac = new AdminQnaListAction();
+		else if( command.equals("adminDeleteMem") ) ac = new AdminDeleteMemAction();
+		else if( command.equals("adminDeleteReply") ) ac = new AdminDeleteReplyAction();
+		else if( command.equals("adminMemDetail") ) ac = new AdminMemDetailAction();
+		
 		
 		/**
 		 * 여기 밑에서부터 붙여넣기 해주시면 됩니다.

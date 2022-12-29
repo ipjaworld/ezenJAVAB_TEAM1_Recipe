@@ -7,7 +7,7 @@ public class ReplyVO {
 	
 	private Integer replyseq;
 	private String id;
-	private Integer number;
+	private Integer rnum;
 	private String content;
 	private Timestamp replydate;
 	
@@ -23,11 +23,11 @@ public class ReplyVO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public Integer getNumber() {
-		return number;
+	public Integer getRnum() {
+		return rnum;
 	}
-	public void setNumber(Integer number) {
-		this.number = number;
+	public void setRnum(Integer rnum) {
+		this.rnum = rnum;
 	}
 	public String getContent() {
 		return content;
