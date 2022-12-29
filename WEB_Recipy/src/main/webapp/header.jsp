@@ -36,8 +36,12 @@
 						<div><a href="shop.do?command=logout">LOGOUT</a></div>
 					</c:otherwise>
 				</c:choose> --%>
-	           <div><a href="#"><img class="top_Icon" src="image/person1.png" ></a></div>
-	           <div><a href="#"><img class="top_Icon" src="image/pensil1.png"></a></div>
+	           <div id="loginOrJoin">
+	           		<a href="#"><img class="top_Icon" src="image/person1.png" ></a>
+	           		<div id="loginBtn"><a href="recipe.do?command=login">로그인</a></div>
+	           		<div id="joinBtn"><a href="recipe.do?command=join">회원가입</a></div>
+	           </div>
+	           <div><a href="recipe.do?command=writeRecipe"><img class="top_Icon" src="image/pensil1.png"></a></div>
 	        </div>
         </div>
         

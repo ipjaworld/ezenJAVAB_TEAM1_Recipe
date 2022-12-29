@@ -134,3 +134,26 @@ right: 0;
 /** 
 아이디의 css 요소들 작업입니다. (분류 진행 중)
   */
+
+#loginOrJoin:hover #loginBtn, #loginOrJoin:hover #joinBtn{
+	opacity: 100;
+}
+
+#loginBtn, #joinBtn{
+	position: absolute;
+	width: 100px;
+	height: 70px;
+	line-height: 70px;
+	z-index: 10;
+	text-align: center;
+	transition-duration: 0.3s;
+	opacity: 0;
+}
+#loginBtn{
+	background: red;
+	right: 250px;
+}
+#joinBtn{
+	background: blue;
+	right: 150px;
+}
