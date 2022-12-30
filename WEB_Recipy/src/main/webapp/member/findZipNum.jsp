@@ -6,14 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="css/shopping.css" rel="stylesheet"> 
-<script src="member/member.js"></script>
+<script src="script/mainAction.js"></script>
 </head>
 <body>
 
 	<div id="popup">
 		<h1>우편번호검색</h1>
-		<form method="post" name="formm" action="shop.do">
+		<form method="post" name="formm" action="recipe.do">
 			<input type="hidden" name="command" value="findZipNum">
 			동 이름 : <input name="dong"  type="text">
 			<input type="submit" value="찾기"  class="submit">

@@ -3,16 +3,16 @@
 <%@ include file="sub_image_menu.html"  %>
 
 <article>
-	<form method="post" name="joinForm" action="recipe.do?command=join" enctype="multipart/form-data">
+	<form method="post" name="joinForm"  enctype="multipart/form-data">
 		<!-- <input type="hidden" name="command"  value="join"> -->
 		<fieldset><legend>Basic Info</legend><br>
-			<label>Profile</label><input type="file" name="porfile"><br>
+			<label>Profile</label><input type="file" name="img"><br>
 			<label>User ID</label><input type="text" name="id" size="12" onkeyup="chkIdCode(event)"><input type="hidden" name="reid">
 		    <input type="button" value="중복 체크" class="dup" onclick="idcheck(event)"><br>
 		    <label>Nick Name</label><input type="text" name="nickname" size="12"><br>
 		    <label>Password</label><input type="password" name="pwd" id="userpwd"><br> 
 		    <label>Retype Password</label><input type="password" name="pwdCheck" id="userpwdchk"><br> 
-            <p id="error1" style="color:red">1</p>
+            <p id="error1" style="color:red"> </p>
 		    <label>Name</label><input type="text"  name="name"><br> 
 		    <label>Phone Number</label><input  type="text" name="phone" onkeyup="chkPhoneCode(event)"><br>
 		</fieldset>
@@ -22,8 +22,9 @@
 		    <input type="button" value="주소 찾기" class="dup" onclick="post_zip()"><br>
 			<label>Address</label><input type="text" name="address1"   size="50"><br>
 			<label>&nbsp;</label><input type="text" name="address2"   size="25"> <br>
-			<label>E-Mail</label><input type="text"  name="email" id="useremail"><br>
-            <p id="error2" style="color:red">1</p>
+			<label>E-Mail</label><input type="text"  name="email" id="useremail"><br> 
+            <p id="error2" style="color:red"> </p>
+            <input type="hidden" name="useyn" value="Y">
 		</fieldset>
 		
 		<div class="clear"></div>

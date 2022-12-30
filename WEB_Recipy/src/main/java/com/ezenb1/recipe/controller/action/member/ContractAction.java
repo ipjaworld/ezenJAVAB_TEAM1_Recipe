@@ -14,7 +14,7 @@ public class ContractAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String url="members/contract.jsp";
+		String url="member/contract.jsp";
 		RequestDispatcher dispatcher=request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 		

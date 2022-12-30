@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>idcheck.jsp</title>
-<link href="css/shopping.css" rel="stylesheet"> 
-<script src="member/member.js"></script>
+
+<script src="script/mainAction.js"></script>
 </head>
 <body>
 <h1>ID 중복 확인</h1>
-<form method="post" name="idCheckForm" action="shop.do">
+<form method="post" name="idCheckForm" action="recipe.do">
 	<input type="hidden" name="command" value="idCheckForm" />
 	<!-- id 입력창 -->
 	User ID :  <input type="text" name="id" value="${id}" >

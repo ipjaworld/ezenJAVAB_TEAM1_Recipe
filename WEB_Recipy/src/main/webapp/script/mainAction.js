@@ -147,7 +147,7 @@ function go_save(){
        alert("전화번호을 입력해 주세요.");      
        document.joinForm.phone.focus();
    } else{
-      document.joinForm.action = "recipe.do";
+      document.joinForm.action = "recipe.do?command=join";
        document.joinForm.submit();
    }
 }
