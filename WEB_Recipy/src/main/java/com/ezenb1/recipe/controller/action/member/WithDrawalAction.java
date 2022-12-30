@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.ezenac.shop.controller.action.Action;
-import com.ezenac.shop.dao.MemberDao;
-import com.ezenac.shop.dto.MemberVO;
+import com.ezenb1.recipe.controller.action.Action;
+import com.ezenb1.recipe.dao.MemberDao;
+import com.ezenb1.recipe.dto.MembersVO;
 
 public class WithDrawalAction implements Action {
 
@@ -23,12 +23,12 @@ public class WithDrawalAction implements Action {
 		
 		if(mvo==null) {
 			url="shop.do?command=loginForm";
-			request.setAttribute("message", "�α����� �ʿ��� �����Դϴ�");
+			request.setAttribute("message", "");
 		}else {
 			
 			MemberDao mdao = MemberDao.getInstance();
 			mdao.withDrawalMember(mvo.getId() );
-			request.setAttribute("message", "Ż��Ǿ����ϴ�. Ż��ȸ���� ������ 3������ �����Ǹ� �� �Ⱓ�ȿ� ������ ���� ���� ���� ������ �����մϴ�.");
+			request.setAttribute("message", "");
 			session.removeAttribute("loginUser");
 		}
 		

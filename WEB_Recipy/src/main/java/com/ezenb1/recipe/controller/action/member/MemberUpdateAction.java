@@ -24,15 +24,12 @@ public class MemberUpdateAction implements Action {
 		 ServletContext context = session.getServletContext();
 		 String path = context.getRealPath("upload");
 		   
-		   String code="";
+		
 	   
 		   try {
 		   MultipartRequest multi = new MultipartRequest(
 		      request,path,5*1024*1024,"UTF-8",new DefaultFileRenamePolicy()
 		   );
-		
-		
-		
 		
 		MemberDao mdao = MemberDao.getInstance();
 		MembersVO mvo = new MembersVO();
@@ -65,7 +62,7 @@ public class MemberUpdateAction implements Action {
 			      //객체생성 실패에 대한 예외처리 or 파일 업로드 실패에 대한 예외처리
 			      System.out.println("파일 업로드 실패"+e);
 			   }
-			   String url = "recipe.do?command=productView&code="+code;
+			   String url = "recipe.do?command=;
 			   RequestDispatcher rd = request.getRequestDispatcher(url);
 			   rd.forward(request, response);
 		
