@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.ezenb1.recipe.dto.AdminVO;
 import com.ezenb1.recipe.dto.MembersVO;
 import com.ezenb1.recipe.dto.QnaVO;
 import com.ezenb1.recipe.dto.ReplyVO;
@@ -302,7 +303,27 @@ public class AdminDao {
 		
 	}
 	
-		
+	public AdminVO getAdmin(String id) {
+		AdminVO avo = null;
+		con = Dbman.getConnection();
+		String sql = "select * from admins where aid=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				avo = new AdminVO();
+				avo.setAdminId(rs.getString("aid"));
+				avo.setAdminPwd(rs.getString("pwd"));
+				avo.setAdminPhone(rs.getString("phone"));
+			}
+		} catch (SQLException e) { e.printStackTrace();
+		} finally { Dbman.close(con, pstmt, rs);
+		}
+		return avo;
+	}	
+	
+	
 	}
 	
 

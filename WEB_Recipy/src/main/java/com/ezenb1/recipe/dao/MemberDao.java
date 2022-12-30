@@ -87,34 +87,34 @@ public class MemberDao {
 	}
 
 
-	public void insertMember(MembersVO mvo) {
-		
-		String url="insert into members(id, pwd, name, phone, email, nick, address1, address2, zip_num, img, useyn) "
-				+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-		con= Dbman.getConnection();
-		
-		try {
-			pstmt=con.prepareStatement(url);
-			pstmt.setString(1, mvo.getId());      
-			pstmt.setString(2, mvo.getPwd());
-			pstmt.setString(3, mvo.getName());
-			pstmt.setString(4, mvo.getPhone());
-			pstmt.setString(5, mvo.getEmail());
-			pstmt.setString(6, mvo.getNick());
-			pstmt.setString(7, mvo.getAddress1());
-			pstmt.setString(8, mvo.getAddress2());
-			pstmt.setString(9, mvo.getZip_num());
-			pstmt.setString(10, mvo.getImg());
-			pstmt.setString(11, mvo.getUseyn());
-			pstmt.executeUpdate();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			Dbman.close(con, pstmt, rs);
-		}
-		
+	public int insertMember(MembersVO mvo) {
+        int result =0;
+        String url="insert into members(id, pwd, name, phone, email, nick, address1, address2, zip_num, img, useyn) "
+              + "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        con= Dbman.getConnection();
+        
+        try {
+           pstmt=con.prepareStatement(url);
+           pstmt.setString(1, mvo.getId());      
+           pstmt.setString(2, mvo.getPwd());
+           pstmt.setString(3, mvo.getName());
+           pstmt.setString(4, mvo.getPhone());
+           pstmt.setString(5, mvo.getEmail());
+           pstmt.setString(6, mvo.getNick());
+           pstmt.setString(7, mvo.getAddress1());
+           pstmt.setString(8, mvo.getAddress2());
+           pstmt.setString(9, mvo.getZip_num());
+           pstmt.setString(10, mvo.getImg());
+           pstmt.setString(11, mvo.getUseyn());
+           result=pstmt.executeUpdate();
+           
+        } catch (SQLException e) {
+           e.printStackTrace();
+        } finally {
+           Dbman.close(con, pstmt, rs);
+        }
+        return result;
 	}
-
 
 	public void updateMember(MembersVO mvo) {
 		
