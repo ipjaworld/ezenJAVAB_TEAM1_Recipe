@@ -89,11 +89,43 @@ function go_reply_delete(){
 	}    
 }
 
-function selectAll(selectAll)  {
+function go_adminQna_delete(){
+	var count = 0;
+	if( document.frm.qseq.length == undefined ){
+		if( document.frm.qseq.checked==true ) count++;
+		
+	}else{
+		for( var i=0; i<document.frm.qseq.length; i++){
+			if( document.frm.qseq[i].checked==true){
+				count++;
+			}
+		}
+	}	
+	if(count == 0) {
+		alert("삭제할 항목을 선택하세요");
+	}	
+	else{	
+		document.frm.action = "recipe.do?command=adminDeleteQna";
+	    document.frm.submit();    
+	}    
+}
+
+
+function selectAll(selectAll,name)  {
   const checkboxes 
-       = document.getElementsByName('id');
+       = document.getElementsByName(name);
   
   checkboxes.forEach((checkbox) => {
     checkbox.checked = selectAll.checked;
   })
+}
+
+
+function go_view(qseq){
+	location.href="recipe.do?command=adminQnaDetail&qseq="+qseq;
+}
+
+function go_rep(){
+	document.frm.action="recipe.do?command=adminSaveReply";
+	document.frm.submit();
 }

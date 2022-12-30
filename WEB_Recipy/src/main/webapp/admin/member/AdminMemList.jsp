@@ -13,7 +13,7 @@
 	</table><br>
 	<table id="membersList">
 	
-		<tr> <th><input type='checkbox'name='id' value='selectall' onclick='selectAll(this)'/>전체선택/해제</th>
+		<tr> <th><input type='checkbox'name='id' value='selectall' onclick='selectAll(this,name)'/>전체선택/해제</th>
 		<th>아이디</th><th> 이름 </th><th>이메일</th><th>닉네임</th><th>가입일</th>
 		</tr>
 	    <c:forEach items="${membersList}" var="membersVO">  

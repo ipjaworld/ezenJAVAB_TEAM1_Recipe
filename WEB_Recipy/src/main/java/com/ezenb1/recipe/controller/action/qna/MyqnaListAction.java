@@ -24,8 +24,9 @@ public class MyqnaListAction implements Action {
 		
 		// 로그인 체크
 		HttpSession session = request.getSession();
-		MembersVO mvo = (MembersVO)session.getAttribute("loginUser");
-		if(mvo==null) {
+		//MembersVO mvo = (MembersVO)session.getAttribute("loginUser");
+		String loginUser="sdsds";
+		if(loginUser==null) {
 		url = "recipe.do?command=loginForm";
 		}else{
 			// 로그인한 아이디로 qna 목록을 조회하고 리턴받음  
@@ -36,7 +37,7 @@ public class MyqnaListAction implements Action {
 			// 내가 보는값이 다른페이지면
 			if( request.getParameter("page") !=null ) {
 			// 리퀘스트에 파라미터로 page가 전달된다면 page변수값을 그값으로 대체
-			//  1을 지우고 현재 보는값으로 저장	
+			//  1을 지우고 현재 보는값으로 저장
 				page = Integer.parseInt( request.getParameter("page") );
 				session.setAttribute("page", page);
 			// 2이상의 페이지에서 게시물을 보다가 다시 게시판으로 돌아갈때, 보던 페이지번호를 잃어 버리는 경우가 많아서

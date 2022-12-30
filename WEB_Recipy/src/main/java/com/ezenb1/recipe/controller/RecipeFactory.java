@@ -4,12 +4,15 @@ import com.ezenb1.recipe.controller.action.Action;
 import com.ezenb1.recipe.controller.action.IndexAction;
 import com.ezenb1.recipe.controller.action.admin.AdminAction;
 import com.ezenb1.recipe.controller.action.admin.AdminDeleteMemAction;
+import com.ezenb1.recipe.controller.action.admin.AdminDeleteQnaAction;
 import com.ezenb1.recipe.controller.action.admin.AdminDeleteReplyAction;
 import com.ezenb1.recipe.controller.action.admin.AdminMemDetailAction;
 import com.ezenb1.recipe.controller.action.admin.AdminMemListAction;
+import com.ezenb1.recipe.controller.action.admin.AdminQnaDetailAction;
 import com.ezenb1.recipe.controller.action.admin.AdminQnaListAction;
 import com.ezenb1.recipe.controller.action.admin.AdminRecipeListAction;
 import com.ezenb1.recipe.controller.action.admin.AdminReplyListAction;
+import com.ezenb1.recipe.controller.action.admin.AdminSaveReplyAction;
 import com.ezenb1.recipe.controller.action.admin.AdminSleepMemAction;
 import com.ezenb1.recipe.controller.action.member.FindAccountByAction;
 import com.ezenb1.recipe.controller.action.member.FindAccountFormAction;
@@ -63,6 +66,9 @@ public class RecipeFactory {
 		
 		else if( command.equals("recipeForm") ) ac = new RecipeFormAction();
 		else if( command.equals("writeRecipe") ) ac = new WriteRecipeAction();
+		else if( command.equals("adminDeleteQna") ) ac = new AdminDeleteQnaAction();
+		else if( command.equals("adminQnaDetail") ) ac = new AdminQnaDetailAction();
+		else if( command.equals("adminSaveReply") ) ac = new AdminSaveReplyAction();
 		
 		/**
 		 * 여기 밑에서부터 붙여넣기 해주시면 됩니다.

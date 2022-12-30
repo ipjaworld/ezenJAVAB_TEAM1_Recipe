@@ -32,7 +32,7 @@
         <h3>Q&A 관리</h3>
     </div>
     <div class="smi_content">
-        <div><a href="recipe.do?command=adminQnaList">Q&A 리스트</a></div>
+        <div><a href="recipe.do?command=adminQnaList&page=1&key=">Q&A 리스트</a></div>
     </div>
 </div>
 

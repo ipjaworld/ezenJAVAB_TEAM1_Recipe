@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.ezenb1.recipe.dto.MembersVO;
+import com.ezenb1.recipe.dto.QnaVO;
 import com.ezenb1.recipe.dto.ReplyVO;
 import com.ezenb1.recipe.util.Dbman;
 import com.ezenb1.recipe.util.Paging;
@@ -182,6 +183,125 @@ public class AdminDao {
 	    } finally { Dbman.close(con, pstmt, rs); } 
 		return useyn;
 	}
+	public int getAdminQnaCount(String tableName, String fieldName1, String fieldName2, String key) {
+		
+		int count = 0;
+		con = Dbman.getConnection();
+		String sql = "select count(*) as cnt from " + tableName + " where " + fieldName1 + " like '%'||?||'%' or "+fieldName2+" like '%'||?||'%'";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,  key);
+			pstmt.setString(2,  key);
+			rs = pstmt.executeQuery();
+			if(rs.next())
+				count = rs.getInt("cnt");
+		} catch (SQLException e) { e.printStackTrace();
+		} finally { Dbman.close(con, pstmt, rs);
+		}
+		return count;
+	}
+	public ArrayList<QnaVO> selectQna(Paging paging, String key) {
+		
+		ArrayList<QnaVO> list = new ArrayList<QnaVO>();
+		String sql = " select * from ("
+				+ " select * from ("
+				+ " select rownum as rn, q.* from "
+				+ "(( select * from qna where qsubject like '%'||?||'%' or qcontent like '%'||?||'%' order by qseq desc ) q)"
+				+ " ) where rn>=?"
+				+ " ) where rn<=?";
+		con = Dbman.getConnection();
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,  key);
+			pstmt.setString(2,  key);
+			pstmt.setInt(3,  paging.getStartNum() );
+			pstmt.setInt(4,  paging.getEndNum() );
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				QnaVO qvo = new QnaVO();
+				qvo.setQseq(rs.getInt("qseq"));
+				qvo.setId(rs.getString("id"));
+				qvo.setQsubject(rs.getString("qsubject"));
+				qvo.setQnadate(rs.getTimestamp("qnadate"));
+				qvo.setQcontent(rs.getString("qcontent"));
+				qvo.setSecret(rs.getString("secret"));
+				qvo.setReplyQna(rs.getString("replyQna"));
+				qvo.setRep(rs.getInt("rep"));						
+				list.add(qvo);
+			}
+		} catch (SQLException e) {	e.printStackTrace();
+		} finally {  Dbman.close(con, pstmt, rs);  }
+		return list;
+	}
+	public void deleteQna(String dqseq) {
+		
+		String sql = "delete from qna where qseq=?";
+		con = Dbman.getConnection();
+		try {
+		      pstmt = con.prepareStatement(sql); 
+		      pstmt.setString(1, dqseq);
+		      pstmt.executeUpdate();
+		} catch (Exception e) { e.printStackTrace();
+	    } finally { Dbman.close(con, pstmt, rs); }  
+		
+	}
+	public QnaVO getAdminQna(String qseq) {
+		
+		QnaVO qvo = null;
+		String sql = "select * from qna where qseq=?";
+		con = Dbman.getConnection();
+		try {			  
+		      pstmt = con.prepareStatement(sql); 
+		      pstmt.setString(1, qseq);		    
+		      rs=pstmt.executeQuery();
+		      if(rs.next()) {
+		    	  qvo = new QnaVO();
+		    	  qvo.setQseq(rs.getInt("qseq"));
+		    	  qvo.setId(rs.getString("id"));
+		    	  qvo.setQsubject(rs.getString("qsubject"));
+		    	  qvo.setQnadate(rs.getTimestamp("qnadate"));
+		    	  qvo.setQcontent(rs.getString("qcontent"));
+		    	  qvo.setSecret(rs.getString("secret"));
+		    	  qvo.setReplyQna(rs.getString("replyQna"));
+		    	  qvo.setRep(rs.getInt("rep"));
+		    	 	    	  
+		      }
+		} catch (Exception e) { e.printStackTrace();
+	    } finally { Dbman.close(con, pstmt, rs); } 
+		
+		return qvo;
+	}
+	public ArrayList<QnaVO> getQnaReplyList(String qseq) {
+		ArrayList<QnaVO> list = new ArrayList<QnaVO>();
+		String sql = "select * from qna where qseq=?";
+		con = Dbman.getConnection();
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1,  qseq);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				QnaVO qvo = new QnaVO();
+				qvo.setRep(rs.getInt("rep"));
+				qvo.setReplyQna(rs.getString("replyQna"));
+				list.add(qvo);
+			}
+		} catch (SQLException e) {	e.printStackTrace();
+		} finally {  Dbman.close(con, pstmt, rs);  }
+		return list;
+	}
+	public void updateReplyQna(int qseq, String replyQna) {
+		String sql ="update qna set replyQna='"+ replyQna+"', rep=2 where qseq=?";
+		con = Dbman.getConnection();
+		try {
+		      pstmt = con.prepareStatement(sql); 
+		      pstmt.setInt(1,  qseq);
+		      pstmt.executeUpdate();
+		      
+		} catch (Exception e) { e.printStackTrace();
+	    } finally { Dbman.close(con, pstmt, rs); }
+		
+	}
+	
 		
 	}
 	

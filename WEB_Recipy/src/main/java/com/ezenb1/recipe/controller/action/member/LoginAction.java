@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import com.ezenb1.recipe.controller.action.Action;
 import com.ezenb1.recipe.dao.AdminDao;
-import com.ezenb1.recipe.dao.MemberDao;
 import com.ezenb1.recipe.dto.AdminVO;
 import com.ezenb1.recipe.dto.MembersVO;
 
@@ -21,7 +20,7 @@ public class LoginAction implements Action {
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
 		
-		MemberDao mdao = MemberDao.getInstance();
+		MembersVO mdao = MembersDao.getInstance();
 		AdminDao adao = AdminDao.getInstance();
 		MembersVO mvo = mdao.getMember( id );
 		AdminVO avo = adao.getAdmin(id); // admin 테이블에서 관리자 계정을 불러오는 메서드
