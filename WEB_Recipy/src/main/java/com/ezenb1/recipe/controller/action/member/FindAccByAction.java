@@ -20,19 +20,23 @@ public class FindAccByAction implements Action {
 		String phone = "";
 		MemberDao mdao = MemberDao.getInstance();
 		MembersVO mvo = null;
-		if(param.equals("id")){
+		if(param.equals("id")){  // id 찾기를 눌렀을 때
 			name = request.getParameter("name");
 			phone = request.getParameter("phone");
-			mvo = mdao.findId(name, phone);
-		}else if(param.equals("pwd")) {
+			mvo = mdao.findId(name, phone); // id 검색 메서드
+		}else if(param.equals("pwd")) { // 비밀번호 찾기를 눌렀을 때
 			name = request.getParameter("name");
 			phone = request.getParameter("phone");
 			String id = request.getParameter("id");
-			mvo = mdao.findPwd(name, phone, id);
+			mvo = mdao.findPwd(name, phone, id); // 비밀번호 검색 메서드
+		}
+		if(mvo != null) {
+			request.setAttribute("Account", mvo);
+		}else {
+			request.setAttribute("message", "등록된 정보가 없습니다.");
 		}
 		
-		request.setAttribute("Account", mvo);
-		// mvo가 없을 경우 jsp로 이동해서 jsp 내 조건문으로 처리 가능?
+		request.getRequestDispatcher("recipe.do?command=findAccountBy").forward(request, response);
 
 	}
 

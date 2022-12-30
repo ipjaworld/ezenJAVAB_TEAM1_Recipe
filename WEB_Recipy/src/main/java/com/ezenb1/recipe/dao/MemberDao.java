@@ -56,9 +56,9 @@ public class MemberDao {
 
 
 	public MembersVO getMember(String id) {
-		MembersVO mvo = new MembersVO();
+		MembersVO mvo = null;
 		
-		String sql = "select * from member where id=?";
+		String sql = "select * from members where id=?";
 		con = Dbman.getConnection();
 		try {
 			pstmt = con.prepareStatement(sql);
@@ -77,6 +77,7 @@ public class MemberDao {
 		        mvo.setPhone(rs.getString("phone"));
 		        mvo.setUseyn(rs.getString("useyn"));
 		        mvo.setIndate(rs.getTimestamp("indate"));
+		        mvo.setImg(rs.getString("img"));
 			}
 		} catch (SQLException e) { e.printStackTrace();
 		} finally { Dbman.close(con, pstmt, rs);   }		
@@ -88,7 +89,7 @@ public class MemberDao {
 
 	public void insertMember(MembersVO mvo) {
 		
-		String url="insert into member(id, pwd, name, phone, email, nick, address1, address2, zip_num, img, useyn) "
+		String url="insert into members(id, pwd, name, phone, email, nick, address1, address2, zip_num, img, useyn) "
 				+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		con= Dbman.getConnection();
 		
@@ -117,7 +118,7 @@ public class MemberDao {
 
 	public void updateMember(MembersVO mvo) {
 		
-		String sql="update member set pwd=?, name=?, phone=?, email=?, nick=?, address1=?, address2=?, zip_num=?, img=? where id=?";
+		String sql="update members set pwd=?, name=?, phone=?, email=?, nick=?, address1=?, address2=?, zip_num=?, img=? where id=?";
 		con = Dbman.getConnection();
 		
 		try {
@@ -145,7 +146,7 @@ public class MemberDao {
 
 
 	public void withDrawalMember(String id) {
-		String sql="delete from member where id=?";
+		String sql="delete from members where id=?";
 		con=Dbman.getConnection();
 		
 		try {
@@ -165,7 +166,7 @@ public class MemberDao {
 	public MembersVO findId(String name, String phone) {
 		MembersVO mvo = null;
 		con = Dbman.getConnection();
-		String sql = "select * from members where name=?, phone=?";
+		String sql = "select * from members where name=? and phone=?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
@@ -197,7 +198,7 @@ public class MemberDao {
 	public MembersVO findPwd(String name, String phone, String id) {
 		MembersVO mvo = null;
 		con = Dbman.getConnection();
-		String sql = "select * from members where name=?, phone=?, id=?";
+		String sql = "select * from members where name=? and phone=? and id=?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, name);
@@ -224,6 +225,7 @@ public class MemberDao {
 		}
 		return mvo;
 	}
+	
 	
 	
 	
