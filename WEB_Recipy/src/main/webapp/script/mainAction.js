@@ -202,30 +202,30 @@ function autoHypenPhone(str){
             return str;
         }
 
-        function chkIdCode(event) {
-            const regExp = /[^0-9a-zA-Z]/g;
-            if (regExp.test(event.target.value)) {
-                event.target.value = event.target.value.replace(regExp, '');
-            }
-        }
+function chkIdCode(event) {
+    const regExp = /[^0-9a-zA-Z]/g;
+    if (regExp.test(event.target.value)) {
+        event.target.value = event.target.value.replace(regExp, '');
+    }
+}
 
-        function chkPhoneCode(event){
-            const regExp1 = /[^0-9a-zA-Z]/g;
-            if (regExp1.test(event.target.value)) {
-                event.target.value = event.target.value.replace(regExp1, '');
-            }
+function chkPhoneCode(event){
+    const regExp1 = /[^0-9a-zA-Z]/g;
+    if (regExp1.test(event.target.value)) {
+        event.target.value = event.target.value.replace(regExp1, '');
+    }
 
-            const regExp2 = /[0-9]/g;
-            if (regExp2.test(event.target.value)) {
-                var _val =  event.target.value.trim();
-                event.target.value = autoHypenPhone(_val);
-            }
+    const regExp2 = /[0-9]/g;
+    if (regExp2.test(event.target.value)) {
+        var _val =  event.target.value.trim();
+        event.target.value = autoHypenPhone(_val);
+    }
 
-            const regExp3 = /^[a-zA-Z]*$/;
-            if (regExp3.test(event.target.value)) {
-                event.target.value = event.target.value.replace(regExp3, '');
-            }
-        }
+    const regExp3 = /^[a-zA-Z]*$/;
+    if (regExp3.test(event.target.value)) {
+        event.target.value = event.target.value.replace(regExp3, '');
+    }
+}
      
         
         $( function(){
@@ -273,3 +273,33 @@ function autoHypenPhone(str){
                 }
             })
         } )
+
+
+// 로그인 폼
+function loginCheck(){
+	if(document.loginFrm.id.value==""){
+		alert("아이디는 필수입력사항입니다.");
+		document.loginFrm.id.focus();
+		return false;
+	}else if(document.loginFrm.pwd.value==""){
+		alert("비밀번호는 필수입력사항입니다.");
+		document.loginFrm.pwd.focus();
+		return false;
+	}else{
+		return true;
+	}
+}
+
+// 계정 찾기 폼 이동
+function find_account(){
+	location.href="recipe.do?command=findAccountForm";
+}
+
+// 아이디, 비밀번호 찾기
+function search(param){
+	document.frm.action = "recipe.do?command=findAccBy&param="+param;
+	document.frm.submit();
+}
+
+        
+        

@@ -161,6 +161,70 @@ public class MemberDao {
 		
 	}
 	
+
+	public MembersVO findId(String name, String phone) {
+		MembersVO mvo = null;
+		con = Dbman.getConnection();
+		String sql = "select * from members where name=?, phone=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				mvo = new MembersVO();
+				mvo.setId(rs.getString("id"));
+				mvo.setPwd(rs.getString("pwd"));
+				mvo.setName(rs.getString("name"));
+				mvo.setPhone(rs.getString("phone"));
+				mvo.setEmail(rs.getString("email"));
+				mvo.setNick(rs.getString("nick"));
+				mvo.setZip_num(rs.getString("zip_num"));
+				mvo.setAddress1(rs.getString("address1"));
+				mvo.setAddress2(rs.getString("address2"));
+				mvo.setUseyn(rs.getString("useyn"));
+				mvo.setIndate(rs.getTimestamp("indate"));
+				mvo.setImg(rs.getString("img"));
+			}
+		} catch (SQLException e) { e.printStackTrace();
+		} finally { Dbman.close(con, pstmt, rs);
+		}
+		
+		return mvo;
+	}
+
+
+	public MembersVO findPwd(String name, String phone, String id) {
+		MembersVO mvo = null;
+		con = Dbman.getConnection();
+		String sql = "select * from members where name=?, phone=?, id=?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, phone);
+			pstmt.setString(3, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				mvo = new MembersVO();
+				mvo.setId(rs.getString("id"));
+				mvo.setPwd(rs.getString("pwd"));
+				mvo.setName(rs.getString("name"));
+				mvo.setPhone(rs.getString("phone"));
+				mvo.setEmail(rs.getString("email"));
+				mvo.setNick(rs.getString("nick"));
+				mvo.setZip_num(rs.getString("zip_num"));
+				mvo.setAddress1(rs.getString("address1"));
+				mvo.setAddress2(rs.getString("address2"));
+				mvo.setUseyn(rs.getString("useyn"));
+				mvo.setIndate(rs.getTimestamp("indate"));
+				mvo.setImg(rs.getString("img"));
+			}
+		} catch (SQLException e) { e.printStackTrace();
+		} finally { Dbman.close(con, pstmt, rs);
+		}
+		return mvo;
+	}
+	
 	
 	
 	
