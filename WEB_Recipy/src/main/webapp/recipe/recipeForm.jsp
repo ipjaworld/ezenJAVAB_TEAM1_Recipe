@@ -48,8 +48,8 @@
 			</tr>
 			
 		</table>
-		<input class="btn" type="button" value="등록" onClick="go_recipe_save()">           
-		<input class="btn" type="button" value="목록" onClick="go_recipe_list()"> 
+		<input class="btn" type="button" value="등록" onClick="go_recipe(save)">           
+		<input class="btn" type="button" value="목록" onClick="go_recipe(list)"> 
 	</form>
 </article>
 
