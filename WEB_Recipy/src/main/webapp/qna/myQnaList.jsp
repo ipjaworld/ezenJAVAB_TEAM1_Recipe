@@ -10,11 +10,14 @@
 	<tr><th>번호</th><th>제목</th><th>등록일</th><th>답변 여부</th></tr>
 	<c:forEach items="${qnaList}" var="qnaVO">
 		<tr><td>${qnaVO.qseq}</td>
-			<td><a href="shop.do?command=qnaView&qseq=${qnaVO.qseq}">${qnaVO.subject}</a></td>
-			<td><fmt:formatDate value="${qnaVO.indate}" type="date" /></td>
+			<td><a href="recipy.do?command=qnaDetail&qseq=${qnaVO.qseq}">${qnaVO.qsubject}</a>
+				<!-- 제목 옆에 비밀글 표시 작업 0:공개, 1:비공개글 -->
+				<c:if test="${qnaVO.secret==1}">&nbsp;<span style="font-size:60%">비밀글</span></c:if>
+			</td>
+			<td><fmt:formatDate value="${qnaVO.qnadate}" type="date" /></td>
 			<td><c:choose>
 			 	<c:when test="${qnaVO.rep==1}">no</c:when>
-			 	<c:when test="${qnaVO.rep==2}">yes</c:when>
+			 	<c:when test="${qnaVO.rep==0}">yes</c:when>
 			</c:choose></td>
 		</tr>
 	</c:forEach>
@@ -22,7 +25,7 @@
 <!-- 여기서부터 시작! -->
 	<div id="paging" style="font-size:120%; font-weight:bold; margin-left:300px">
 		<!-- 페이지를 클릭했을때 이동할url을 변수에 저장 -->
-		<c:url var="action" value="shop.do?command=qnaList"/>
+		<c:url var="action" value="recipy.do?command=qnaList"/>
 		
 		<!-- 리퀘스트로 전달된 paging 객체값들을 이용 -->
 		<!-- 이전 버튼 표시 -->

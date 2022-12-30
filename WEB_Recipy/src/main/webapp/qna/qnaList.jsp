@@ -3,18 +3,18 @@
 
 
 <article>
-<h2> 고객 게시판</h2>
-<h3> 고객님의 질문에 대해서 운영자가 1:1답변을 드립니다.</h3>
+<h2> 고객 게시판 </h2>
+<h3> 고객님의 질문에 대해서 운영자가 답변을 드립니다.</h3>
 <form name="formm" method="post">
 <table id="#">
 	<tr><th>번호</th><th>제목</th><th>등록일</th><th>답변 여부</th></tr>
 	<c:forEach items="${qnaList}" var="qnaVO">
 		<tr><td>${qnaVO.qseq}</td>
-			<td><a href="shop.do?command=qnaView&qseq=${qnaVO.qseq}">${qnaVO.subject}</a></td>
-			<td><fmt:formatDate value="${qnaVO.indate}" type="date" /></td>
+			<td><a href="recipe.do?command=qnaDetail&qseq=${qnaVO.qseq}">${qnaVO.qsubject}</a></td>
+			<td><fmt:formatDate value="${qnaVO.qnadate}" type="date" /></td>
 			<td><c:choose>
 			 	<c:when test="${qnaVO.rep==1}">no</c:when>
-			 	<c:when test="${qnaVO.rep==2}">yes</c:when>
+			 	<c:when test="${qnaVO.rep==0}">yes</c:when>
 			</c:choose></td>
 		</tr>
 	</c:forEach>
@@ -22,7 +22,7 @@
 <!-- 여기서부터 시작! -->
 	<div id="paging" style="font-size:120%; font-weight:bold; margin-left:300px">
 		<!-- 페이지를 클릭했을때 이동할url을 변수에 저장 -->
-		<c:url var="action" value="shop.do?command=qnaList"/>
+		<c:url var="action" value="recipe.do?command=qnaList"/>
 		
 		<!-- 리퀘스트로 전달된 paging 객체값들을 이용 -->
 		<!-- 이전 버튼 표시 -->

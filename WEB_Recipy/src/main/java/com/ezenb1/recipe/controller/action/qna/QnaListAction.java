@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ezenb1.recipe.controller.action.Action;
+import com.ezenb1.recipe.dao.QnaDao;
 import com.ezenb1.recipe.dto.MembersVO;
 import com.ezenb1.recipe.dto.QnaVO;
 import com.ezenb1.recipe.util.Paging;
@@ -25,6 +26,7 @@ public class QnaListAction implements Action {
 		// 로그인 체크
 		HttpSession session = request.getSession();
 		MembersVO mvo = (MembersVO)session.getAttribute("loginUser");
+	
 		if(mvo==null) {
 			url = "recipe.do?command=loginForm";
 		}else{
@@ -53,18 +55,18 @@ public class QnaListAction implements Action {
 		paging.setPage(page);
 		
 		// 로그인 아이디로 검색한 QnA 게시물의 갯수를 구합니다
-		int count = qdao.getAllCount( mvo.getId() );
+		int count = qdao.getAllCount();
 		// 게시물 총갯수를 totalCount 변수에 저장. paging() 메서드로 호출
 		paging.setTotalCount(count);
 		// 모든 객체의 멤버변수 준비 완료
 		
-		// 현재 페이지에 표시할 게시물(5개, 로그인한 유저가 작성한 startNum부터 endNum 까지)을 조회해서 list로 리턴 받습니다
-		ArrayList<QnaVO> list = qdao.selectQna( mvo.getId(), paging );
+		ArrayList<QnaVO> list = qdao.selectQna( paging );
 		
 		request.setAttribute("qnaList", list);
 		request.setAttribute("paging", paging);
 
 		}
+		
 		request.getRequestDispatcher(url).forward(request, response);
 		}
 	}

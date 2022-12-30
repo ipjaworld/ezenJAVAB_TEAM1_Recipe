@@ -4,6 +4,15 @@
 태그들의 css 요소들 작업입니다.
 모든 요소는 분류에서 abc 순으로 정렬되어 있습니다.
   */
+  table{
+  	border: 1px dotted red;
+  }
+  th, tr, td{
+  border: 1px dotted red;
+  text-align: center;
+  padding:10px;
+  }
+  
 a{
 	text-decoration: none;
 	color: black;

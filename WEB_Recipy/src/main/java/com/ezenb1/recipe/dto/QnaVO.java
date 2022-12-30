@@ -11,9 +11,16 @@ public class QnaVO {
 	private String qcontent;
 	private String secret;
 	private String replyQna;
-	private Integer rep;	
+	private Integer rep;
+	private String qnapass;
 	
 	
+	public String getQnapass() {
+		return qnapass;
+	}
+	public void setQnapass(String qnapass) {
+		this.qnapass = qnapass;
+	}
 	public Integer getQseq() {
 		return qseq;
 	}

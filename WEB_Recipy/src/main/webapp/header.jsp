@@ -38,7 +38,7 @@
 				</c:choose> --%>
 	           <div id="loginOrJoin">
 	           		<a href="#"><img class="top_Icon" src="image/person1.png" ></a>
-	           		<div id="loginBtn"><a href="recipe.do?command=login">로그인</a></div>
+	           		<div id="loginBtn"><a href="recipe.do?command=loginForm">로그인</a></div>
 	           		<div id="joinBtn"><a href="recipe.do?command=join">회원가입</a></div>
 	           </div>
 	           <div><a href="recipe.do?command=recipeForm"><img class="top_Icon" src="image/pensil1.png"></a></div>
