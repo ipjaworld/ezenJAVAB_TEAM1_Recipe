@@ -24,24 +24,29 @@
 	              	<input class="col-8" type="search" placeholder="원하는 재료나 음식 이름을 입력해주세요." aria-label="Search">
 	           		<button class="btn btn-dark"" type="submit">검색</button>
 	           </div>
-	           <div><a href="recipe.do?command=admin">admin login</a></div>
-	           <%-- <c:choose>
-					<c:when test="${empty loginUser}">
-						<div><a href="shop.do?command=loginForm">LOGIN</a></div>
-						<div><a href="shop.do?command=contract">JOIN</a></div>
-					</c:when>
-					<c:otherwise>
-						<li>${loginUser.name}(${loginUser.id})</li>
-						<div><a href="shop.do?command=editForm">정보수정</a></div>
-						<div><a href="shop.do?command=logout">LOGOUT</a></div>
-					</c:otherwise>
-				</c:choose> --%>
-	           <div id="loginOrJoin">
-	           		<a href="#"><img class="top_Icon" src="image/person1.png" ></a>
-	           		<div id="loginBtn"><a href="recipe.do?command=loginForm">로그인</a></div>
-	           		<div id="joinBtn"><a href="recipe.do?command=join">회원가입</a></div>
-	           </div>
-	           <div><a href="recipe.do?command=recipeForm"><img class="top_Icon" src="image/pensil1.png"></a></div>
+	           
+	           
+				<div>
+					<c:if test="${loginUser.id==null}">
+						<div id="loginOrJoin">
+			           		<a href="#"><img class="top_Icon" src="image/person1.png" ></a>
+			           		<div id="loginBtn"><a href="recipe.do?command=loginForm">로그인</a></div>
+			           		<div id="joinBtn"><a href="recipe.do?command=joinForm">회원가입</a></div>
+			           </div>
+					</c:if>
+					<c:if test="${loginUser.id!=null}">
+						${loginUser.name}(${loginUser.id})님 로그인하셨습니다.
+						<input type="button" value="로그아웃" onClick="location.href='recipe.do?command=logout'"/>
+						<div><a href="recipe.do?command=recipeForm"><img class="top_Icon" src="image/pensil1.png"></a></div>
+					</c:if>
+					<c:if test="${loginAdmin.adminId!=null}">
+						<div><a href="recipe.do?command=admin">admin login</a></div>
+						${loginAdmin.adminId}님 로그인하셨습니다.
+						<input type="button" value="로그아웃" onClick="location.href='recipe.do?command=logout'"/>
+						<div><a href="recipe.do?command=recipeForm"><img class="top_Icon" src="image/pensil1.png"></a></div>
+					</c:if>
+				</div>
+				
 	        </div>
         </div>
         
