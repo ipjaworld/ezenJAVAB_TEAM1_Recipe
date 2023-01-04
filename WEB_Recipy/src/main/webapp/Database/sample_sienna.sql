@@ -1,4 +1,17 @@
-create sequence recipe_seq increment by 1 start with 1;
+-- 230104 수정사항
+CREATE SEQUENCE SEQ_ingTag_tag_id INCREMENT BY 1 START WITH 1;
+
+
+-- 230103 수정 사항
+alter table ingredient drop column quantity;
+alter table ingredient drop column price;
+
+alter table ri add quantity varchar2(50);
+alter table ri add price nmber(10);
+alter table ri add code_detail varchar2(50);
+
+-- 뷰 : interest_view, favorite_view, ri_view
+
 
 create or replace view riView 
 as
@@ -15,6 +28,8 @@ select * from members;
 select * from admins;
 select * from qna;
 select * from reply;
+select * from recipeTag;
+select * from ingTag;
 
 alter table processImg drop primary key;
 
@@ -28,18 +43,18 @@ values('scott', '1234', '홍길동', '010-8469-7436', 'ezen@neodo.gosu', '검성
 '서울시 성동구 성수동 1가', '1번지21호', '133-110', '/imageProfile/profile1.png');
 
 insert into members(id, pwd, name, phone, email, nick, address1, address2, zip_num, img)
-values('somi', '1234', '아이유', '010-8771-9256', 'aiu@doko.aiu', '아이유', 
+values('somi', '1234', '아이유', '010-8771-9256', 'aiu@doko.aiu', '우윳빛깔아이유', 
 '서울시 송파구 잠실2동', '리센츠 아파트 201동 505호', '130-120', '/imageProfile/profile2.png');
 
 alter table members modify nick varchar2(50);
 alter table recipe modify subject varchar2(100);
 alter table qna modify qsubject varchar2(200);
 
--- 기본 틀
-insert into recipe(rnum, id, subject, content, time, type, thumbnail) 
-values(recipe_seq.nextVal, 'scott', '제목', '내용', 소요시간, 종류(번호), '썸네일 경로');
-insert into processImg values( rnum, '경로', '요리 과정 묘사', 1);
-insert into ingredient(rnum, iname, quantity) values(레시피 번호, '재료 이름', 재료 양);
+create sequence recipe_seq increment by 1 start with 1;
+drop sequence recipe_seq;
+
+alter table ingredient modify quantity varchar2(50);
+
 
 -- 1번 레시피
 insert into recipe(rnum, id, subject, content, time, type, thumbnail) 
@@ -50,6 +65,25 @@ insert into processImg(rnum, links, description, iseq) values( 1, '/imageRecipe/
 insert into processImg(rnum, links, description, iseq) values( 1, '/imageRecipe/peach4.jpg', '오븐 용기에 버터를 넣고 전자레인지에 돌려 녹인다.', 4);
 insert into processImg(rnum, links, description, iseq) values( 1, '/imageRecipe/peach5.jpg', '에어프라이어에 넣고 160℃에서 30분 굽는다.', 5);
 -- 재료 : 천도복숭아 2개, 설탕 3숟가락, 계피가루 1/3숟가락, 중력분 80g, 설탕 70g, 베이킹파우더 약간, 소금 약간, 우유 2/3종이컵, 버터 40g
+select * from ingTag;
+select * from recipeTag;
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '천도복숭아');
+insert into recipeTag(tag_id, rnum, quantity) values(1, 1, '2개');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal,'설탕');
+insert into recipeTag(tag_id, rnum, quantity) values(2, 1, '3스푼');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal,'계피가루');
+insert into recipeTag(tag_id, rnum, quantity) values(3, 1, '1/3스푼');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal,'중력분');
+insert into recipeTag(tag_id, rnum, quantity) values(4, 1, '80g');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal,'베이킹파우더');
+insert into recipeTag(tag_id, rnum, quantity) values(5, 1, '약간');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal,'소금');
+insert into recipeTag(tag_id, rnum, quantity) values(6, 1, '약간');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal,'우유');
+insert into recipeTag(tag_id, rnum, quantity) values(7, 1, '2/3종이컵');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal,'버터');
+insert into recipeTag(tag_id, rnum, quantity) values(8, 1, '40g');
+
 
 -- 2번 레시피
 insert into recipe(rnum, id, subject, content, time, type, thumbnail) 
@@ -60,6 +94,30 @@ insert into processImg(rnum, links, description, iseq) values( 2, '/imageRecipe/
 insert into processImg(rnum, links, description, iseq) values( 2, '/imageRecipe/piesoup4.jpg', '생크림을 넣고 약불에서 끓여 농도를 맞춘다. 소금, 후추로 간 한다.오븐 용기에 담고 페이스트리 생지로 용기를 덮는다', 4);
 insert into processImg(rnum, links, description, iseq) values( 2, '/imageRecipe/piesoup5.jpg', '오븐에 넣고 170℃에서 15분 굽는다.', 5);
 -- 재료 : 감자 2개, 양파 1/2개, 버터 1조각, 물 2종이컵,  생크림 1/2종이컵, 치킨스톡 큐브 1개, 소금 약간, 후추 약간, 페이스트리생지 1장, 달걀 1개
+select * from ingTag;
+select * from recipeTag;
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '감자');
+insert into recipeTag(tag_id, rnum, quantity) values(9, 2, '2개');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '양파');
+insert into recipeTag(tag_id, rnum, quantity) values(10, 2, '1/2개');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '버터'); -- 기존 8
+insert into recipeTag(tag_id, rnum, quantity) values(8, 2, '1조각');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '물');
+insert into recipeTag(tag_id, rnum, quantity) values(11, 2, '2종이컵');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '생크림');
+insert into recipeTag(tag_id, rnum, quantity) values(12, 2, '1/2종이컵');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '치킨스톡큐브');
+insert into recipeTag(tag_id, rnum, quantity) values(13, 2, '1개');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '소금'); -- 기존 6
+insert into recipeTag(tag_id, rnum, quantity) values(6, 2, '약간');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '후추');
+insert into recipeTag(tag_id, rnum, quantity) values(14, 2, '약간');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '페이스트리생지');
+insert into recipeTag(tag_id, rnum, quantity) values(15, 2, '1장');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '달걀');
+insert into recipeTag(tag_id, rnum, quantity) values(16, 2, '1개');
+
+
 
 -- 3번 레시피
 insert into recipe(rnum, id, subject, content, time, type, thumbnail) 
@@ -68,6 +126,22 @@ insert into processImg(rnum, links, description, iseq) values( 3, '/imageRecipe/
 insert into processImg(rnum, links, description, iseq) values( 3, '/imageRecipe/swsoup2.jpg', '다시물을 붓고 된장을 풀어주면서 끓인다.', 2);
 insert into processImg(rnum, links, description, iseq) values( 3, '/imageRecipe/swsoup3.jpg', '한소끔 끓인 국에 다진마늘과 두부를 넣고 한번 더 끓인다.', 3);
 -- 재료 : 자른미역 10g, 두부 1/2모, 다시물 1L, 된장 1숟가락, 참기름 1숟가락, 국간장 1숟가락, 다진마늘 1/2숟가락
+select * from ingTag;
+select * from recipeTag;
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '자른미역');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 3, '10g');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '두부');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 3, '1/2모');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '다시물');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 3, '1L');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '된장');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 3, '1숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '참기름');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 3, '1숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '국간장');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 3, '1숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '다진마늘');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 3, '1/2숟가락');
 
 -- 4번 레시피
 insert into recipe(rnum, id, subject, content, time, type, thumbnail) 
@@ -78,7 +152,24 @@ insert into processImg(rnum, links, description, iseq) values( 4, '/imageRecipe/
 insert into processImg(rnum, links, description, iseq) values( 4, '/imageRecipe/cabbage4.jpg', '볼에 양념재료를 모두 넣고 섞는다.', 4);
 insert into processImg(rnum, links, description, iseq) values( 4, '/imageRecipe/cabbage5.jpg', '알배추, 쪽파에 양념을 넣고 무친 후 통깨를 뿌려 완성한다.', 5);
 -- 재료 : 알배추 300g, 소금 1/2숟가락, 쪽파 2줄, 통깨 약간, 된장 1+1/2숟가락, 고춧가루 1/2숟가락, 매실액 1/3숟가락, 다진마늘 1/2숟가락, 참기름 1숟가락
-
+select * from ingTag;
+select * from recipeTag;
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '알배추');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 4, '300g');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '소금'); -- 기존
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 4, '1/2숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '쪽파'); 
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 4, '2줄');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '통깨');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 4, '약간');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '된장'); -- 기존
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 4, '1.5스푼');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '고춧가루');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 4, '1/2숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '매실액');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 4, '1/3숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '다진마늘'); -- 기존
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 4, '1/2숟가락');
 -- 5번 레시피
 insert into recipe(rnum, id, subject, content, time, type, thumbnail) 
 values(recipe_seq.nextVal, 'scott', '바지락야채죽', '봄 제철 식재료로 만드는 요리!바지락야채죽', 30, 1 , '/imageThumb/clamThumb.jpg');
@@ -88,6 +179,24 @@ insert into processImg(rnum, links, description, iseq) values( 5, '/imageRecipe/
 insert into processImg(rnum, links, description, iseq) values( 5, '/imageRecipe/clam4.jpg', '볼에 양념재료를 모두 넣고 섞는다.', 4);
 insert into processImg(rnum, links, description, iseq) values( 5, '/imageRecipe/clam5.jpg', '알배추, 쪽파에 양념을 넣고 무친 후 통깨를 뿌려 완성한다.', 5);
 -- 재료 : 쌀 1종이컵, 바지락살 1종이컵, 부추 30g, 양파 1/3개, 당근 1/4개, 소금 약간, 참기름 1숟가락, 물 4종이컵
+select * from ingTag;
+select * from recipeTag;
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '쌀');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 5, '1종이컵');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '바지락살');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 5, '1종이컵');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '부추');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 5, '30g');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '양파'); -- 기존
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 5, '1/3개');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '당근');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 5, '1/4개');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '소금'); -- 기존
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 5, '약간');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '참기름'); -- 기존
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 5, '1숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '물'); -- 기존
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 5, '4종이컵');
 
 -- 6번 레시피
 insert into recipe(rnum, id, subject, content, time, type, thumbnail) 
@@ -97,6 +206,20 @@ insert into processImg(rnum, links, description, iseq) values( 6, '/imageRecipe/
 insert into processImg(rnum, links, description, iseq) values( 6, '/imageRecipe/lemonade3.jpg', '컵에 코코넛 젤리>얼음>사이다를 넣고 2를 넣는다.', 3);
 insert into processImg(rnum, links, description, iseq) values( 6, '/imageRecipe/lemonade4.jpg', '동결건조베리를 토핑으로 올려 완성한다.', 4);
 -- 재료 : 레몬 2개, 사이다 300ml, 믹스베리 티 2개, 따뜻한물 50ml, 코코넛 젤리 1숟가락, 동결건조베리 적당량
+select * from ingTag;
+select * from recipeTag;
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '레몬');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 6, '2개');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '사이다');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 6, '300ml');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '믹스베리티');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 6, '2개');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '따뜻한물'); -- 기존 물과 분류 x
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 6, '50ml');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '코코넛젤리');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 6, '1숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '동결건조베리');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 6, '적당량');
 
 -- 7번 레시피 
 insert into recipe(rnum, id, subject, content, time, type, thumbnail) 
@@ -107,6 +230,24 @@ insert into processImg(rnum, links, description, iseq) values( 7, '/imageRecipe/
 insert into processImg(rnum, links, description, iseq) values( 7, '/imageRecipe/majesoba4.png', '면에 맛간장 3숟가락, 고추기름 2숟가락을 넣고 비벼준 다음 그릇에 담아요.', 4);
 insert into processImg(rnum, links, description, iseq) values( 7, '/imageRecipe/majesoba5.png', '부추, 파, 김, 다진마늘, 산초가루, 볶아둔 고기를 담고 달걀노른자를 올려 마무리해요.', 5);
 -- 재료 : 돼지고기다짐육 2종이컵, 부추 1줌, 쪽파 1줌, 다진마늘 1숟가락, 우동면 2인분, 김가루 약간, 산초가루 약간, 달걀노른자 2개 [맛간장] 간장 1/2종이컵, 맛술 1/2종이컵, 다시마 2조각, 설탕 2숟가락, 가쓰오부시 1/2종이컵 [고기양념] 고추기름 1숟가락, 다진마늘 1숟가락, 굴소스 2숟가락, 맛간장 2숟가락, 두반장 1+1/2숟가락, 설탕 1숟가락, 맛술 2숟가락, 후추 약간 [다시마식초] 다시마 1조각, 식초 1/2종이컵, 설탕 1숟가락
+select * from ingTag;
+select * from recipeTag;
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '돼지고기다짐육');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 7, '2종이컵');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '부추'); -- 기존
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 7, '1줌');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '쪽파'); -- 기존
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 7, '1줌');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '다진마늘'); -- 기존
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 7, '1숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '우동면');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 7, '2인분');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '달걀노른자');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 7, '2개');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '맛간장');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 7, '3숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '설탕'); -- 기존
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 7, '1숟가락');
 
 -- 8번 레시피
 insert into recipe(rnum, id, subject, content, time, type, thumbnail) 
@@ -115,6 +256,23 @@ insert into processImg(rnum, links, description, iseq) values( 8, '/imageRecipe/
 insert into processImg(rnum, links, description, iseq) values( 8, '/imageRecipe/cucumber2.png', '양념 재료를 섞는다.', 2);
 insert into processImg(rnum, links, description, iseq) values( 8, '/imageRecipe/cucumber3.png', '오이고추와 양념을 버무린다.', 3);
 -- 재료 : 오이고추 100g [양념재료] 된장 1숟가락, 고추장 1/3숟가락, 마늘 1/2숟가락, 올리고당 1/2숟가락, 마요네즈 1숟가락, 깨소금 1/3숟가락
+select * from ingTag;
+select * from recipeTag;
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '오이고추');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 8, '100g');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '된장'); -- 기존
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 8, '1숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '고추장');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 8, '1/3숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '마늘');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 8, '1/2숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '올리고당');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 8, '1/2숟가락');
+insert into ingTag(tag_id, tag) values(SEQ_ingTag_tag_id.nextVal, '마요네즈');
+insert into recipeTag(tag_id, rnum, quantity) values(tag_id, 8, '1숟가락');
+
+
+
 
 -- 9번 레시피
 insert into recipe(rnum, id, subject, content, time, type, thumbnail) 
@@ -151,7 +309,7 @@ insert into processImg(rnum, links, description, iseq) values( 12, '/imageRecipe
 insert into processImg(rnum, links, description, iseq) values( 12, '/imageRecipe/garlicpasta2.jpg', '비엔나소시지에 칼집을 넣는다.', 2);
 insert into processImg(rnum, links, description, iseq) values( 12, '/imageRecipe/garlicpasta3.jpg', '끓는 물에 소금을 넣고 면을 삶는다.', 3);
 insert into processImg(rnum, links, description, iseq) values( 12, '/imageRecipe/garlicpasta4.jpg', '달군 팬에 올리브유를 두르고 마늘, 소시지를 볶다가 마늘쫑, 건새우, 페퍼론치노를 넣는다.', 4);
-insert into processImg(rnum, links, description, iseq) values( 12, '/imageRecipe/garlicpasta5.jpg', '면과 면수를 약간 넣고 볶다가 간장, 굴소스를 넣고 소금, 후추로 간한다..', 5);
+insert into processImg(rnum, links, description, iseq) values( 12, '/imageRecipe/garlicpasta5.jpg', '면과 면수를 약간 넣고 볶다가 간장, 굴소스를 넣고 소금, 후추로 간한다.', 5);
 -- 재료 : 파스타면 2인분, 마늘종 10줄, 비엔나소시지 10개, 건새우 15g, 마늘 5알, 간장 1숟가락, 굴소스 2숟가락, 페페론치노 4개, 소금 약간, 후추 약간, 올리브유 2숟가락
 
 -- 13번 레시피
@@ -401,10 +559,6 @@ insert into processImg(rnum, links, description, iseq) values( 37, '/imageRecipe
 insert into processImg(rnum, links, description, iseq) values( 37, '/imageRecipe/frenchtoast4.png', '팬에 버터를 녹여 토스트를 노릇하게 굽는다.', 4);
 insert into processImg(rnum, links, description, iseq) values( 37, '/imageRecipe/frenchtoast5.png', '좋아하는 과일을 올리고 슈가파우더를 뿌려 완성한다.', 5);
 -- 재료 : 큐브식빵 or 통식빵 1개, 우유 1종이컵, 계란 3개, 설탕 1숟가락, 시나몬파우더 1/2숟가락, 소금 1꼬집, 버터 2조각, 슈가파우더 약간
-
-
-
-
 
 
 
