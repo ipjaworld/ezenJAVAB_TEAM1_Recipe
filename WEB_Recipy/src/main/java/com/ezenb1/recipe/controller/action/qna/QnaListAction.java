@@ -26,9 +26,8 @@ public class QnaListAction implements Action {
 		// 로그인 체크
 		HttpSession session = request.getSession();
 		MembersVO mvo = (MembersVO)session.getAttribute("loginUser");
-	
 		if(mvo==null) {
-			url = "recipe.do?command=loginForm";
+		url = "recipe.do?command=loginForm";
 		}else{
 		
 		// 로그인한 아이디로 qna 목록을 조회하고 리턴받음  
@@ -55,7 +54,8 @@ public class QnaListAction implements Action {
 		paging.setPage(page);
 		
 		// 로그인 아이디로 검색한 QnA 게시물의 갯수를 구합니다
-		int count = qdao.getAllCount();
+		int count = qdao.getAllCount(mvo.getId() ); 
+	
 		// 게시물 총갯수를 totalCount 변수에 저장. paging() 메서드로 호출
 		paging.setTotalCount(count);
 		// 모든 객체의 멤버변수 준비 완료

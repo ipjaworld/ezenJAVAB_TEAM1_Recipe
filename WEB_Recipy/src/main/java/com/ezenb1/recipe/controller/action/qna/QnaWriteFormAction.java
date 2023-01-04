@@ -15,14 +15,18 @@ public class QnaWriteFormAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		// 최종 목적지 
 		String url = "qna/qnaWriteForm.jsp"; 
 		
+		// loginUser 세션 유지
 		HttpSession session = request.getSession();
 		MembersVO mvo = (MembersVO)session.getAttribute("loginUser");
 		
+		// 아닐경우 index 이동
 		if(mvo == null) 
-			url = "recipe.do?command=index";
-			
+		url = "recipe.do?command=index";
+		
+		// 값을 가지고 이동
 		request.getRequestDispatcher(url).forward(request, response);
 
 	}

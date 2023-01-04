@@ -19,22 +19,20 @@ public class UpdateQnaAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
+		// 업뎃
+
+		//qdao, qvo 생성 
 		QnaDao qdao = QnaDao.getInstance();
 		QnaVO qvo = new QnaVO();
 		
+		// 
 		HttpSession session = request.getSession();
 		ServletContext context = session.getServletContext();
-		String path = context.getRealPath("upload");
-		MultipartRequest multi = new MultipartRequest(
-		request, path, 20*1024*1024, "UTF-8", new DefaultFileRenamePolicy()
-		);
 		
-		qvo.setId( multi.getParameter("id") );
-		qvo.setQsubject( multi.getParameter("qsubject") );
-		qvo.setQcontent( multi.getParameter("qcontent") );
-		qvo.setSecret( multi.getParameter("secret") );
+		qvo.setId( request.getParameter("id") );
+		qvo.setQsubject( request.getParameter("qsubject") );
+		qvo.setQcontent( request.getParameter("qcontent") );
+		qvo.setSecret( request.getParameter("secret") );
 		
 		qdao.updateQna( qvo );
 		

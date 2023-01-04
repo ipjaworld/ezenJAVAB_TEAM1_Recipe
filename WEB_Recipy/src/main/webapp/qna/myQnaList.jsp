@@ -4,9 +4,9 @@
 
 <article>
 <h2> 나의 게시판</h2>
-<h3> 고객님의 질문에 대해서 운영자가 1:1답변을 드립니다.</h3>
+<h5> 고객님의 질문에 대해서 운영자가 1:1답변을 드립니다.</h5>
 <form name="formm" method="post">
-<table id="#">
+<table id="#" style="width:100%;">
 	<tr><th>번호</th><th>제목</th><th>등록일</th><th>답변 여부</th></tr>
 	<c:forEach items="${qnaList}" var="qnaVO">
 		<tr><td>${qnaVO.qseq}</td>

@@ -23,6 +23,7 @@ public class WriteQnaAction implements Action {
 		HttpSession session = request.getSession();
 		MembersVO mvo = (MembersVO)session.getAttribute("loginUser");
 		
+		// 나중에 수정해줄것!
 		if(mvo == null) { 
 			url = "recipe.do?command=loginForm";
 		}else {
@@ -31,11 +32,13 @@ public class WriteQnaAction implements Action {
 			qvo.setQcontent(request.getParameter("qcontent"));
 			qvo.setSecret(request.getParameter("secret"));
 			qvo.setId(mvo.getId() );
+		
 
 			QnaDao qdao = QnaDao.getInstance();
 			qdao.insertQna(qvo);
 
 	}
+			// url로 바로 이동 
 			response.sendRedirect(url);
 	}
 }

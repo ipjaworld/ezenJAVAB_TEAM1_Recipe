@@ -6,10 +6,11 @@
 	<h3> 고객님의 질문에 대해서 운영자가 1:1답변을 드립니다.</h3>
 	<form name="formm" method="post" action="recipe.do">
 		<input type="hidden" name="command" value="qnaWrite">
+				<input type="hidden" name="qseq" value="${recipe.qseq}">
 		<fieldset>
-			<legend>Board Info</legend>
-			<label>Title</label><input type="text" name="subject" size="60"><br>
-			<label>Content</label><textarea rows="8" cols="65" name="content"></textarea>
+			<legend>문의하기</legend>
+			<label>제목</label><input type="text" name="subject" size="60"><br>
+			<label>내용</label><textarea rows="8" cols="65" name="content"></textarea>
 		</fieldset>
 		<div class="clear"></div>
 		<div id="buttons" style="float:right">
@@ -19,4 +20,5 @@
 		</div>
 	</form>
 </article>
+
 <%@ include file="../footer.jsp" %>
