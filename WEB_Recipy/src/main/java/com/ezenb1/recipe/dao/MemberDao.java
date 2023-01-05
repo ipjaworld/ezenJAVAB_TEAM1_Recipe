@@ -106,6 +106,7 @@ public class MemberDao {
            pstmt.setString(9, mvo.getZip_num());
            pstmt.setString(10, mvo.getImg());
            pstmt.setString(11, mvo.getUseyn());
+       
            result=pstmt.executeUpdate();
            
         } catch (SQLException e) {
@@ -118,7 +119,8 @@ public class MemberDao {
 
 	public void updateMember(MembersVO mvo) {
 		
-		String sql="update members set pwd=?, name=?, phone=?, email=?, nick=?, address1=?, address2=?, zip_num=?, img=? where id=?";
+		String sql="update members set pwd=?, name=?, phone=?, email=?, nick=?, "
+				+ "address1=?, address2=?, zip_num=?, img=?, useyn=?, indate=? where id=?";
 		con = Dbman.getConnection();
 		
 		try {
@@ -133,7 +135,9 @@ public class MemberDao {
 			pstmt.setString(7,mvo.getAddress2());
 			pstmt.setString(8,mvo.getZip_num());
 			pstmt.setString(9,mvo.getImg());
-			pstmt.setString(10,mvo.getId() );
+			pstmt.setString(10,mvo.getUseyn());
+			pstmt.setTimestamp(11,mvo.getIndate());
+			pstmt.setString(12,mvo.getId() );
 			
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -146,7 +150,7 @@ public class MemberDao {
 
 
 	public void withDrawalMember(String id) {
-		String sql="delete from members where id=?";
+		String sql="Update members set useyn='N' where id = ?";
 		con=Dbman.getConnection();
 		
 		try {

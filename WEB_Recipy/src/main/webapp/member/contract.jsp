@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
-<%@ include file="sub_image_menu.html" %>
+
 
 <article>
 	<h2>회원 가입 약관</h2>

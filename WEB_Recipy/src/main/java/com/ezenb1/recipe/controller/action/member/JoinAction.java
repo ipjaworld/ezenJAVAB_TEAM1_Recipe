@@ -1,6 +1,7 @@
 package com.ezenb1.recipe.controller.action.member;
 
 import java.io.IOException;
+import java.sql.Timestamp;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -55,7 +56,15 @@ public class JoinAction implements Action {
 		mvo.setAddress2(multi.getParameter("address2"));
 		mvo.setZip_num(multi.getParameter("zip_num"));
 		mvo.setUseyn(multi.getParameter("useyn"));
-		mvo.setImg("/imageProfile/"+multi.getFilesystemName("img"));
+	//	mvo.setIndate(Timestamp.valueOf(multi.getParameter("indate")));
+		
+		 if(multi.getFilesystemName("img")==null) {
+			 mvo.setImg("/imageProfile/basic.jpg"); //???? 
+		 } else {
+			 mvo.setImg(multi.getFilesystemName("img"));
+		 }
+		
+		
 
 		MemberDao mdao = MemberDao.getInstance();
 		int result =mdao.insertMember(mvo);

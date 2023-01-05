@@ -19,16 +19,16 @@ public class WithDrawalAction implements Action {
 		HttpSession session = request.getSession();
 		MembersVO mvo = (MembersVO) session.getAttribute("loginUser");
 		
-		String url="shop.do?command=loginForm";
+		String url="recipe.do?command=loginForm";
 		
 		if(mvo==null) {
 			url="shop.do?command=loginForm";
-			request.setAttribute("message", "");
+			request.setAttribute("message", "로그인이 필요한 서비스입니다");
 		}else {
 			
 			MemberDao mdao = MemberDao.getInstance();
 			mdao.withDrawalMember(mvo.getId() );
-			request.setAttribute("message", "");
+			request.setAttribute("message", "탈퇴되었습니다. 탈퇴회원의 정보는 3개월간 보관되며 그 기간안에 별도의 가입없이 계정 복구가 가능합니다");
 			session.removeAttribute("loginUser");
 		}
 		
